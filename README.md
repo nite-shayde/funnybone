@@ -1,2 +1,3 @@
 # joke-me-off
-humor-based dating app
+a humor-based dating app that takes a light-hearted approach to bringing people together
+

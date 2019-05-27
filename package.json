@@ -1,0 +1,30 @@
+{
+  "name": "joke-me-off",
+  "version": "1.0.0",
+  "description": "a humor-based dating app",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nite-shayde/joke-me-off.git"
+  },
+  "keywords": [
+    "humor",
+    "dating"
+  ],
+  "author": "Nite Shayde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nite-shayde/joke-me-off/issues"
+  },
+  "homepage": "https://github.com/nite-shayde/joke-me-off#readme"
+}
