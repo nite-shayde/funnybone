@@ -1,4 +1,4 @@
-echo "pulling for upstream master"
+echo "pulling from origin master"
 
 git checkout master
 
