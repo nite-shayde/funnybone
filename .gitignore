@@ -1,5 +1,5 @@
 #dist
-/client/dist
+client/dist/bundle.js
 
 # Logs
 logs

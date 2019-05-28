@@ -13,19 +13,19 @@ function App() {
     <div id="main-contents" className="row">
 
       <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
-      user profile component
+     
       <Profile user={user}  />
       </div>
 
       <div id="main-col" className="col-md-6 card text-white bg-info mb-3">
         {/* Compose message component */}
-        message composer component
+   
         {/*  */}
       </div>
 
       <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
           {/* RIGHT BAR COMPONENT */}
-          right side-bar
+         
       </div>
 
     </div>
