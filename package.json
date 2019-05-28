@@ -19,7 +19,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
+    "start": "server/index.js",
+    "build": "npm install; webpack -p",
     "client-dev": "webpack --config webpack.config.js --mode development --watch"
   },
   "repository": {
