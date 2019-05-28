@@ -10,4 +10,4 @@ npm run build
 
 echo "restarting server..."
 
-pm2 restart all
+pm2 restart joke-me
