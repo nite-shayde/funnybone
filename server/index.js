@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const userRoute = require('./routes/user-route');
 const messageRoute = require('./routes/message-route')
 const contentRoute = require('./routes/content-route');
@@ -8,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // add static assests
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
 app.use('/api/user', userRoute);
