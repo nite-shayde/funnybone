@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dummyUserData from './dummy-user-data.js';
-// import Profile from './components/user-profile.jsx'
+import Profile from './components/user-profile.jsx'
 
 function App() {
   const [user, setUser ] = useState(dummyUserData.joe);
@@ -14,7 +14,7 @@ function App() {
 
       <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
       user profile component
-      {/* <Profile user={user} */}  
+      <Profile user={user}  />
       </div>
 
       <div id="main-col" className="col-md-6 card text-white bg-info mb-3">
