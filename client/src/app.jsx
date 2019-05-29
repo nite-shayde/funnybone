@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import dummyUserData from './dummy-user-data.js';
 import Profile from './components/user-profile.jsx'
+import MessageComposer from './components/message-composer.jsx';
+import SideBar from './components/side-bar.jsx';
+import MainView from './components/main-view.jsx';
 
 function App() {
   const [user, setUser ] = useState(dummyUserData.joe);
@@ -8,24 +11,27 @@ function App() {
 
   return ( 
   <div className="container">
-    <h1 className="row">FUNNY BONE</h1>
-    <div className="row"><nav>dis the nav bar</nav></div>
+    <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
+
+    <nav className="navbar navbar-expand-lg navbar-dark bg-warning">dis the nav bar</nav>
+   
     <div id="main-contents" className="row">
 
-      <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
+      <div id="left-side-bar" className="col-md-3">
      
       <Profile user={user}  />
       </div>
 
-      <div id="main-col" className="col-md-6 card text-white bg-info mb-3">
+      <div id="main-col" className="col-md-6">
         {/* Compose message component */}
-   
+        <MessageComposer />
+        <MainView />
         {/*  */}
       </div>
 
-      <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
+      <div id="left-side-bar" className="col-md-3">
           {/* RIGHT BAR COMPONENT */}
-         
+         <SideBar />
       </div>
 
     </div>
