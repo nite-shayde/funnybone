@@ -3,6 +3,7 @@ import dummyUserData from './dummy-user-data.js';
 import Profile from './components/user-profile.jsx'
 import MessageComposer from './components/message-composer.jsx';
 import SideBar from './components/side-bar.jsx';
+import MainView from './components/main-view.jsx';
 
 function App() {
   const [user, setUser ] = useState(dummyUserData.joe);
@@ -10,7 +11,7 @@ function App() {
 
   return ( 
   <div className="container">
-    <div className="jumbotron"><h1 className="text-warning">FUNNY BONE</h1></div>
+    <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
     <nav className="navbar navbar-expand-lg navbar-dark bg-warning">dis the nav bar</nav>
    
@@ -24,7 +25,7 @@ function App() {
       <div id="main-col" className="col-md-6">
         {/* Compose message component */}
         <MessageComposer />
-   
+        <MainView />
         {/*  */}
       </div>
 
