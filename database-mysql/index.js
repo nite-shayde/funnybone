@@ -5,7 +5,7 @@ const host = 'localhost';
 const user = 'root';
 const port = 3306;
 const password = '';
-const database = 'joke-me-off';
+const database = 'jokeMeOff';
 
 const connection = new Sequelize(database, user, password, {
   dialect: 'mysql',
@@ -15,13 +15,14 @@ const connection = new Sequelize(database, user, password, {
 
 const Users = connection.define('users', {
     name: Sequelize.STRING,
-    user_name: Sequelize.STRING,
-    profile_pic: Sequelize.STRING.BINARY
+    userName: Sequelize.STRING,
+    profilePic: Sequelize.STRING 
 })
 const Messages = connection.define('messages', {
-    text: Sequelize.STRING,
-    from_id: Sequelize.INTEGER,
-    to_id: Sequelize.INTEGER
+  contentType: Sequelize.STRING,
+  content: Sequelize.STRING,
+  fromId: Sequelize.INTEGER,
+  toId: Sequelize.INTEGER
 })
 
 connection.sync()
@@ -30,4 +31,9 @@ connection.sync()
   }).catch((err) => {
     console.log(err, '!!!!!!!!!!!!!');
   });
+
+  module.exports.connection = connection;
+  module.exports.Messages = Messages;
+  module.exports.Users = Users;
+
 
