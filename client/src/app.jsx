@@ -1,25 +1,36 @@
 import React, { useState } from 'react';
 import dummyUserData from './dummy-user-data.js';
-// import Profile from './components/profile.jsx'
+import Profile from './components/user-profile.jsx'
 
 function App() {
   const [user, setUser ] = useState(dummyUserData.joe);
 
-  // setUser();
-  console.log(dummyUserData)
 
   return ( 
-  <div>
-    <h1>FUNNY BONE</h1>
-    <nav>dis the nav bar</nav>
-    <div id="main-contents">
-    {/* PROFILE COMPONENT */}
-    {/* <Profile user={user} */}
-    {/* MAIN COMPONENT */}
-    {/* RIGHT BAR COMPONENT */}
+  <div className="container">
+    <h1 className="row">FUNNY BONE</h1>
+    <div className="row"><nav>dis the nav bar</nav></div>
+    <div id="main-contents" className="row">
+
+      <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
+     
+      <Profile user={user}  />
+      </div>
+
+      <div id="main-col" className="col-md-6 card text-white bg-info mb-3">
+        {/* Compose message component */}
+   
+        {/*  */}
+      </div>
+
+      <div id="left-side-bar" className="col-md-3 card text-white bg-info mb-3">
+          {/* RIGHT BAR COMPONENT */}
+         
+      </div>
+
     </div>
 
-    <footer>powered by yo mama</footer>
+    <footer className="row"> powered by yo mama</footer>
   </div> );
 }
 
