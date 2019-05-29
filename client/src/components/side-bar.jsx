@@ -10,13 +10,13 @@ function SideBar(props) {
          
              {/* TAB HEADERS */}
           {/* <div className="card-header"> */}
-             <ul class="nav nav-tabs">
-            <li class="nav-item">
+             <ul class="nav nav-tabs flex-row flex-nowrap">
+            <div class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#funny">Funny Stuff</a>
-              </li>
-              <li class="nav-item">
+              </div>
+              <div class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#inbox">Inbox</a>
-              </li>
+              </div>
             </ul>
           {/* </div> */}
           

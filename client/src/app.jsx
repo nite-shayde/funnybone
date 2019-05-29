@@ -14,17 +14,22 @@ function App() {
 
     <nav className="navbar navbar-expand-lg navbar-dark bg-warning">dis the nav bar</nav>
    
-    <div id="main-contents" className="d-flex flex-row ">
+    <div id="main-contents" className="row">
 
-      <div id="left-side-bar" className="p-2">
-        <Profile user={user}  />
+      <div id="left-side-bar" className="col-md-3">
+     
+      <Profile user={user}  />
       </div>
 
-      <div id="main-col" className="p-2">
+      <div id="main-col" className="col-md-6">
+        {/* Compose message component */}
         <MessageComposer />
+   
+        {/*  */}
       </div>
 
-      <div id="left-side-bar" className="p-2">
+      <div id="left-side-bar" className="col-md-3">
+          {/* RIGHT BAR COMPONENT */}
          <SideBar />
       </div>
 
