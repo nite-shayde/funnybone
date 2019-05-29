@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 
 const host = 'localhost';
-const user = 'root';
+const user = process.env.DB_USER || 'root';
 const port = 3306;
 const password = '';
 const database = 'jokeMeOff';
