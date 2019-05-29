@@ -1,0 +1,22 @@
+
+
+
+.img-xs {
+  max-width: 2rem;
+}
+
+.img-sm {
+  max-width: 8rem;
+}
+
+.img-md {
+  max-width: 14rem;
+}
+
+.img-lg {
+  max-width: 19rem;
+}
+
+.img-xl {
+  max-width: 22rem;
+}

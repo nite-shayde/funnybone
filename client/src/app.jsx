@@ -6,7 +6,8 @@ import SideBar from './components/side-bar.jsx';
 import MainView from './components/main-view.jsx';
 
 function App() {
-  const [user, setUser ] = useState(dummyUserData[0]);
+  const [allUsers, setAllUsers] = useState(dummyUserData)
+  const [user, setUser ] = useState(allUsers[1]);
   const [view, setView ] = useState("browse");
   const [mainViewUser, setMainViewUser] = useState(null);
 
@@ -33,7 +34,7 @@ function App() {
       <div id="main-col" className="col-md-6">
         {/* Compose message component */}
         <MessageComposer />
-        <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser}/>
+        <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers}/>
         {/*  */}
       </div>
 
@@ -44,7 +45,7 @@ function App() {
 
     </div>
 
-    <footer className="row"> powered by yo mama</footer>
+    <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
   </div> );
 }
 
