@@ -10,24 +10,24 @@ function SideBar(props) {
          
              {/* TAB HEADERS */}
           {/* <div className="card-header"> */}
-             <ul class="nav nav-tabs flex-row flex-nowrap">
-            <div class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#funny">Funny Stuff</a>
+             <ul className="nav nav-tabs flex-row flex-nowrap">
+            <div className="nav-item">
+                <a className="nav-link active" data-toggle="tab" href="#funny">Funny Stuff</a>
               </div>
-              <div class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#inbox">Inbox</a>
+              <div className="nav-item">
+                <a className="nav-link" data-toggle="tab" href="#inbox">Inbox</a>
               </div>
             </ul>
           {/* </div> */}
           
           
             {/* TAB CONTENTS */}
-          {/* <div className="card-body"> */}
-            <div id="myTabContent" class="tab-content">
-              <div class="tab-pane fade show active" id="funny">
+          {/* <div classNameName="card-body"> */}
+            <div id="myTabContent" className="tab-content">
+              <div className="tab-pane fade show active" id="funny">
                 <p>all the memes...</p>
               </div>
-              <div class="tab-pane fade show" id="inbox">
+              <div className="tab-pane fade show" id="inbox">
                 <p>messages...</p>
               </div>
             </div>

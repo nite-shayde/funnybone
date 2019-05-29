@@ -1,36 +1,30 @@
 import React, { useState } from 'react';
 import UserThumbPreview from './user-thumb-preview.jsx';
-
-
-const dummyUserData = [
-  {
-    id: 3,
-    username: 'joeyjoe',
-    profilePic: ''
-  },
-  {
-    id: 7,
-    username: 'samantha',
-    profilePic: ''
-  },
-  {
-    id: 9,
-    username: 'joeyjoe',
-    profilePic: ''
-  },
- 
-
-];
+import DM from './dm.jsx';
+import dummyUserData from '../dummy-user-data';
+import Profile from './profile.jsx';
 
 function MainView(props) {
 
-    const [browseUsers, setBrowseUsers] = useState(dummyUserData);
+    // const [browseUsers, setBrowseUsers] = useState(dummyUserData);
+    const { view, changeView, user, mainViewUser, allUsers } = props;
 
+    if (view === 'profile') {
+      return (
+        <Profile mainViewUser={mainViewUser} changeView={changeView} />
+      )
+    }
+    if (view === 'dm') {
+      return (
+       <DM user={user} mainViewUser={mainViewUser} changeView={changeView}/>
+      )
+    }
+    // or just show the browse user view
     return (
         
         <div className="card text-white bg-primary mb-3">
           <div className="card-body">
-            {browseUsers.map( user => <UserThumbPreview user={user}/> )}
+            {allUsers.filter(u => u.id !== user.id).map( user => <UserThumbPreview key={user.id} user={user} changeView={changeView}/> )}
           </div>
         </div>
     );

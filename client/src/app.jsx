@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import dummyUserData from './dummy-user-data.js';
-import Profile from './components/user-profile.jsx'
+import UserSidebarInfo from './components/user-sidebar-info.jsx'
 import MessageComposer from './components/message-composer.jsx';
 import SideBar from './components/side-bar.jsx';
 import MainView from './components/main-view.jsx';
 
 function App() {
-  const [user, setUser ] = useState(dummyUserData.joe);
+  const [allUsers, setAllUsers] = useState(dummyUserData)
+  const [user, setUser ] = useState(allUsers[1]);
+  const [view, setView ] = useState("browse");
+  const [mainViewUser, setMainViewUser] = useState(null);
+
+
+  function changeView(view, user) {
+    setView(view);
+    setMainViewUser(user)
+  }
 
 
   return ( 
@@ -19,13 +28,13 @@ function App() {
 
       <div id="left-side-bar" className="col-md-3">
      
-      <Profile user={user}  />
+      <UserSidebarInfo user={user}  />
       </div>
 
       <div id="main-col" className="col-md-6">
         {/* Compose message component */}
         <MessageComposer />
-        <MainView />
+        <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers}/>
         {/*  */}
       </div>
 
@@ -36,7 +45,7 @@ function App() {
 
     </div>
 
-    <footer className="row"> powered by yo mama</footer>
+    <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
   </div> );
 }
 

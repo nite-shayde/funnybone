@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function MessageComposer(props) {
 
     const [message, setMessage] = useState('');
+    
 
     return (
         // <div class="row justify-content-center">
@@ -14,9 +15,9 @@ function MessageComposer(props) {
                     <input className="form-control form-control-lg" type="text" value={message} onChange={(event) => setMessage(event.target.value)} />
                 </label>
                 <div className="btn-group" role="group">
-                    <button type="button" className="btn btn-secondary">GIFs</button>
-                    <button type="button" className="btn btn-secondary">Jokes</button>
-                    <button type="button" className="btn btn-secondary">Images</button>
+                    <button id="text" type="button" className="btn btn-secondary">Text</button>
+                    <button id="gif" type="button" className="btn btn-secondary">GIF/Meme</button>
+                    <button id="video" type="button" className="btn btn-secondary">Video</button>
                 </div>
             </form>
           </div>
