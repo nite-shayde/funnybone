@@ -4,6 +4,7 @@ function MessageComposer(props) {
 
     const [message, setMessage] = useState('');
     
+    const placeholder = 'you\'re not funny...\r\nbut you should still try';
 
     return (
         // <div class="row justify-content-center">
@@ -12,7 +13,7 @@ function MessageComposer(props) {
             <form>
                 <label>
                     
-                    <input className="form-control form-control-lg" type="text" placeholder="you're not funny... but you should try" onChange={(e) => setMessage(e.target.value)} />
+                    <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setMessage(e.target.value)} />
                 </label>
                 <div className="btn-group" role="group">
                     <button id="text" type="button" className="btn btn-secondary">Text</button>

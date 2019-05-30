@@ -18,7 +18,7 @@ export function MainView(props) {
     <div className="card text-white bg-secondary mb-3">
     
         
-        <MainViewHeader getViewTarget={getViewTarget}/>
+        <MainViewHeader getViewTarget={getViewTarget} view={view}/>
        
         <div className="card-body">
           <MainViewBody parentProps={props}/>
@@ -65,16 +65,19 @@ export function MainViewBody(props) {
 
 export function MainViewHeader(props) {
 
-  const { getViewTarget} = props;
+  const { getViewTarget, view} = props;
 
   function handleClick(e) {
       getViewTarget(e.target.dataset.target)
   }
 
+
   return ( 
       <div className="card-header d-flex flex-row justify-content-around">
-           <span className="badge badge-warning" data-target="browse" onClick={handleClick}>browse</span>
-          <span className="badge badge-warning" data-target="inbox" onClick={handleClick}>inbox</span>
+          {/* <button id="text" type="button" className="btn btn-secondary">Text</button> */}
+           <button className="btn btn-primary" data-target="browse" onClick={handleClick}>browse</button>
+           <h3>{view}</h3>
+          <button className="btn btn-primary" data-target="inbox" onClick={handleClick}>inbox</button>
       </div>   
   )
 
