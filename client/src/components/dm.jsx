@@ -19,12 +19,12 @@ function DM(props) {
 
 
     return (
-      <div className="card text-white bg-secondary mb-3"> 
+      
     
-           <MainViewHeader getViewTarget={getViewTarget}/>
+          //  {/* <MainViewHeader getViewTarget={getViewTarget}/> */}
          
 
-         <div className="card-body">
+         <div className="">
             <div className="d-flex flex-row justify-content-between">
               <div>
                 <h4>{mainViewUser.username}'s DM</h4>
@@ -40,7 +40,7 @@ function DM(props) {
             </div>
             <MessageComposer />
          </div>
-   </div>
+  
     );
 }
 
