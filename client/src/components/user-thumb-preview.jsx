@@ -15,7 +15,7 @@ function UserThumbPreview(props) {
         <div> 
             <div className="d-flex flex-column">
                 <div data-target="profile" onClick={handleClick}>{  username }</div>
-                <img className="img-thumbnail img-sm" data-target="profile" src={profilePicURL} onClick={handleClick}/>
+                <img data-target="profile" className="img-thumbnail img-sm" src={profilePicURL} onClick={handleClick}/>
                 <button data-target="dm" type="button" className="btn btn-sm btn-danger" onClick={handleClick}>slide into {username}'s DM </button>
             </div>
         </div>

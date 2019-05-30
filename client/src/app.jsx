@@ -33,7 +33,7 @@ function App() {
 
       <div id="main-col" className="col-md-6">
         {/* Compose message component */}
-        <MessageComposer />
+        {/* <MessageComposer /> */}
         <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers}/>
         {/*  */}
       </div>
