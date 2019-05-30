@@ -19,7 +19,12 @@ const Users = connection.define('users', {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    userName: { 
+    username: { 
+      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false,
+    },
+    email: { 
       type: Sequelize.STRING,
       unique: true,
       allowNull: false,
@@ -36,37 +41,16 @@ const Messages = connection.define('messages', {
 connection.sync({ force: false })
   .then((result) => {
     console.log(result, 'are we in the data??????');
+    // Users.bulkCreate(dummyUserData)
+    // .then(user => {
+    //   console.log(user.dataValues);
+    // })
   })
   .catch((err) => {
     console.log(err, '!!!!!!!!!!!!!');
   });
 
-  Users.bulkCreate([
-  {
-    name: 'Kalkidan',
-    userName: 'KalkidanMulatu',
-    email: 'kalki@gmail.com',
-    profilePicURL: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-0/p110x80/48359292_220566528875309_249279966284349440_n.jpg?_nc_cat=104&_nc_ht=scontent-dfw5-1.xx&oh=c87c3905e336d7235594112d4b2d3db0&oe=5D91B150' 
-  },
-  {
-    name: 'Kelly',
-    userName: 'KellyT',
-    email: 'kelly@gmail.com',
-    profilePicURL: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-0/p110x80/48359292_220566528875309_249279966284349440_n.jpg?_nc_cat=104&_nc_ht=scontent-dfw5-1.xx&oh=c87c3905e336d7235594112d4b2d3db0&oe=5D91B150' 
-  },
-  {
-    name: 'Ezra',
-    userName: 'EzraMoges',
-    email: 'ezuyea@gmail.com',
-    profilePicURL: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-0/p110x80/48359292_220566528875309_249279966284349440_n.jpg?_nc_cat=104&_nc_ht=scontent-dfw5-1.xx&oh=c87c3905e336d7235594112d4b2d3db0&oe=5D91B150' 
-  }
-], {
-  validate: true,
-  ignoreDuplicates: true,
-})
-  .then(user => {
-    console.log(user.dataValues);
-  })
+
 
   module.exports.connection = connection;
   module.exports.Messages = Messages;

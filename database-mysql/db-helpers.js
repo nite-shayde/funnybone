@@ -11,6 +11,6 @@ const getUsers = () => {
     })
   };
 
-  getUsers();
+   getUsers();
   module.exports.getUsers = getUsers;
   
