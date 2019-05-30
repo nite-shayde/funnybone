@@ -12,7 +12,7 @@ function UserThumbPreview(props) {
     }
 
     return (
-        <div className="mx-2"> 
+        <div className="mx-2 mb-3"> 
             <div className="d-flex flex-column">
                 <div data-target="profile" onClick={handleClick}>{  username }</div>
                 <img data-target="profile" className="img-thumbnail img-sm" src={profilePicURL} onClick={handleClick}/>

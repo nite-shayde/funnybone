@@ -54,8 +54,8 @@ export function MainViewBody(props) {
     // or just show the browse user view
     return (
         
-          <div className="d-flex flex-row justify-content-between">
-            { allUsers.filter(u => u.id !== user.id)
+          <div className="d-flex flex-row justify-content-between flex-wrap">
+            { allUsers.filter(u => u.username !== user.username)
               .map( u => <UserThumbPreview key={u.id} user={u} changeView={changeView}/> ) }
           </div>
        
