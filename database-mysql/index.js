@@ -26,7 +26,7 @@ const Messages = connection.define('messages', {
 })
 
 const getUsers = () => {
-  return sequelize.query(`SELECT * FROM users`);
+  return User.findAll();
 };
 
 connection.sync()
