@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageComposer from './message-composer.jsx';
+import { MainViewHeader } from './main-view.jsx';
 
 
 
@@ -12,19 +13,24 @@ function DM(props) {
       changeView(e.target.dataset.target, mainViewUser)
   }
 
+  function getViewTarget(target) {
+    changeView(target, mainViewUser)
+  }
+
+
     return (
       <div className="card text-white bg-secondary mb-3"> 
-         <div className="card-header">
-            <div className="d-flex flex-row justify-content-between">
-              <div>
-                <span className="badge badge-warning mb-3" data-target="browse" onClick={handleClick}>back to browse</span>
-                <h4>{mainViewUser.username}'s DM</h4>
-              </div>
-              <img className="img-sm" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
-            </div>
-         </div>
+    
+           <MainViewHeader getViewTarget={getViewTarget}/>
+         
 
          <div className="card-body">
+            <div className="d-flex flex-row justify-content-between">
+              <div>
+                <h4>{mainViewUser.username}'s DM</h4>
+              </div>
+              <img className="img-xs" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
+            </div>
             <div>
                 <ul>
                   <li>message 1</li>

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import dummyUserData from './dummy-user-data.js';
+import dummyUserData from './dummy-user-data';
 import UserSidebarInfo from './components/user-sidebar-info.jsx'
-import MessageComposer from './components/message-composer.jsx';
+// import MessageComposer from './components/message-composer.jsx';
 import SideBar from './components/side-bar.jsx';
-import MainView from './components/main-view.jsx';
+import { MainView } from './components/main-view.jsx';
+
 
 function App() {
-  const [allUsers, setAllUsers] = useState(dummyUserData)
+  // TAKE THIS LINE OUT
+  const dummyData = dummyUserData.map( u => { u.interests = []; return u; } )
+  
+  const [allUsers, setAllUsers] = useState(dummyData)
   const [user, setUser ] = useState(allUsers[1]);
   const [view, setView ] = useState("browse");
   const [mainViewUser, setMainViewUser] = useState(null);
