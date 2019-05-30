@@ -7,17 +7,17 @@ const getUsers = () => {
 
   // getUsers();
   //helper to get all message from a user based on userId 
-//  const getConversation = (userAid, userBid) => {
-//     Messages.findAll({ where: { 
-//                         fromUserId: [ userAid, userBid], 
-//                             toUserId: [userAid, userBid]
-//                     } }).then(projects => {
-//         // projects will be an array of Projects having the id 1, 2 or 3
-//         // this is actually doing an IN query
-//       })
+ const getConversation = (userAid, userBid) => {
+    Messages.findAll({ where: { 
+                        fromUserId: [ userAid, userBid], 
+                            toUserId: [userAid, userBid]
+                    } })
+                    .then(messages => {
+                        console.log(messages)
+      })
       
 
-//  }
+ }
 
 // db findAll :
 
