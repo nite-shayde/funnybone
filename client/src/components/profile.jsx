@@ -15,11 +15,11 @@ function Profile(props) {
     }
 
     return (
-        <div className="card text-white bg-secondary mb-3">
+       
            
-           <MainViewHeader getViewTarget={getViewTarget}/>
+        //    <MainViewHeader getViewTarget={getViewTarget}/>
            
-            <div className="card-body">
+            <div className="">
                 <div className="">
                     <img className="img-thumbnail img-lg" src={profilePicURL} />
                     <h4>@{username}</h4>
@@ -28,7 +28,7 @@ function Profile(props) {
                     <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul>
                 </div>
             </div>
-        </div>
+       
     );
 }
 
