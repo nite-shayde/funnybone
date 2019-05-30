@@ -2,19 +2,22 @@ const { Users } = require('./index');
 const { Messages } = require('./index');
 
 const getUsers = () => {
- Users.findAll()
-    .then(users => {
-        console.log(users, "USERS @@@@@@")
-    })
-    .catch(err => {
-        console.log(err)
-    })
+ return Users.findAll()
   };
 
   // getUsers();
- const getConversation = (userAid, userBid) => {
+  //helper to get all message from a user based on userId 
+//  const getConversation = (userAid, userBid) => {
+//     Messages.findAll({ where: { 
+//                         fromUserId: [ userAid, userBid], 
+//                             toUserId: [userAid, userBid]
+//                     } }).then(projects => {
+//         // projects will be an array of Projects having the id 1, 2 or 3
+//         // this is actually doing an IN query
+//       })
+      
 
- }
+//  }
 
 // db findAll :
 
@@ -26,27 +29,14 @@ const getUsers = () => {
 // SORT BY:
 // createAt (most recent first)
 const saveUser = (user) => {
-    Users.create(user)
-    .then((user) => {
-        console.log(user)
-    }).catch((err) => {
-        console.log(err)
-    });
+   return Users.create(user)
 }
 
 //saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", profilePicURL: "pizzahut.com"})
 const saveMessage = (message) => {
-    Messages.create(message)
-    .then((message) => {
-        console.log(message)
-    }).catch((err) => {
-        console.log(err)
-    });
-
+  return  Messages.create(message)
 }
-saveMessage({contentType: "text",
-    content: "I Don't think Chris is funny",
-    fromId: 3,
-    toId: 1})
+// saveMessage({contentType: "text", content: "I Don't think Chris is funny", fromId: 3, toId: 1})
+
   module.exports.getUsers = getUsers;
   
