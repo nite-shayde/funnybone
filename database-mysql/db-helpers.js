@@ -1,5 +1,6 @@
 const { Users } = require('./index');
 const { Messages } = require('./index');
+const dummyMessages = require('../client/src/dummy-message-data');
 
 const getUsers = () => {
  return Users.findAll()
@@ -8,13 +9,13 @@ const getUsers = () => {
   // getUsers();
   //helper to get all message from a user based on userId 
  const getConversation = (userAid, userBid) => {
-    Messages.findAll({ where: { 
-                        fromUserId: [ userAid, userBid], 
-                            toUserId: [userAid, userBid]
-                    } })
-                    .then(messages => {
-                        console.log(messages)
-      })
+    // Messages.findAll({ where: { 
+    //                     fromUserId: [ userAid, userBid], 
+    //                         toUserId: [userAid, userBid]
+    //                 } })
+    //                 .then(messages => {
+    //                     console.log(messages)
+    //   })
       
 
  }
@@ -36,7 +37,9 @@ const saveUser = (user) => {
 const saveMessage = (message) => {
   return  Messages.create(message)
 }
-// saveMessage({contentType: "text", content: "I Don't think Chris is funny", fromId: 3, toId: 1})
-
-  module.exports.getUsers = getUsers;
+//  saveMessage({contentType: "text", content: "I Don't think Chris is funny", fromId: 3, toId: 1})
+// dummyMessages.forEach((message) => {
+//     saveMessage(message);
+// })
+module.exports.getUsers = getUsers;
   
