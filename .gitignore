@@ -1,5 +1,8 @@
 #dist
-/client/dist
+client/dist/bundle.js
+
+#api keys
+api/.config.js
 
 # Logs
 logs
