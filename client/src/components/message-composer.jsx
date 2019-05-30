@@ -11,8 +11,8 @@ function MessageComposer(props) {
           <div className="card-body">
             <form>
                 <label>
-                    Enter Message:
-                    <input className="form-control form-control-lg" type="text" value={message} onChange={(event) => setMessage(event.target.value)} />
+                    
+                    <input className="form-control form-control-lg" type="text" placeholder="you're not funny... but you should try" onChange={(e) => setMessage(e.target.value)} />
                 </label>
                 <div className="btn-group" role="group">
                     <button id="text" type="button" className="btn btn-secondary">Text</button>

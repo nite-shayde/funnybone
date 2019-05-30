@@ -13,19 +13,27 @@ function DM(props) {
   }
 
     return (
-      <div> 
-        <span className="badge badge-warning" data-target="browse" onClick={handleClick}>back to browse</span>
-        <h3>{mainViewUser.username}'s DM</h3>
-        <img className="img-sm" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
-        <div>
-            <ul>
-              <li>message 1</li>
-              <li>message 2</li>
-              <li>message 3</li>
+      <div className="card text-white bg-secondary mb-3"> 
+         <div className="card-header">
+            <div className="d-flex flex-row justify-content-between">
+              <div>
+                <span className="badge badge-warning mb-3" data-target="browse" onClick={handleClick}>back to browse</span>
+                <h4>{mainViewUser.username}'s DM</h4>
+              </div>
+              <img className="img-sm" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
+            </div>
+         </div>
 
-            </ul>
-        </div>
-        <MessageComposer />
+         <div className="card-body">
+            <div>
+                <ul>
+                  <li>message 1</li>
+                  <li>message 2</li>
+                  <li>message 3</li>
+                </ul>
+            </div>
+            <MessageComposer />
+         </div>
    </div>
     );
 }
