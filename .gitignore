@@ -4,6 +4,8 @@ client/dist/bundle.js
 #api keys
 api/.config.js
 
+.vscode/
+
 # Logs
 logs
 *.log

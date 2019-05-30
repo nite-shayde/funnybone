@@ -31,14 +31,8 @@ function DM(props) {
               </div>
               <img className="img-xs" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
             </div>
-            <div>
-                <ul>
-                  <li>message 1</li>
-                  <li>message 2</li>
-                  <li>message 3</li>
-                </ul>
-            </div>
-            <MessageComposer />
+           
+            <MessageComposer user={user} mainViewUser={mainViewUser}/>
          </div>
   
     );
