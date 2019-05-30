@@ -15,11 +15,11 @@ function giphySearch(query) {
         })
 }
 
-giphySearch('nba')
-    .then((response) => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error);
-    })
+// giphySearch('nba')
+//     .then((response) => {
+//         console.log(response);
+//     }).catch((error) => {
+//         console.log(error);
+//     })
 
 module.exports.giphySearch = giphySearch;
