@@ -25,10 +25,6 @@ const Messages = connection.define('messages', {
   toId: Sequelize.INTEGER
 })
 
-const getUsers = () => {
-  return User.findAll();
-};
-
 connection.sync()
   .then((result) => {
     console.log(result, 'are we in the data??????');
@@ -56,7 +52,6 @@ connection.sync()
   module.exports.connection = connection;
   module.exports.Messages = Messages;
   module.exports.Users = Users;
-  module.exports.getUsers = getUsers;
 
 
 
