@@ -43,7 +43,7 @@ export function MainViewBody(props) {
     }
     if (view === 'dm') {
       return (
-       <DM user={user} mainViewUser={mainViewUser} changeView={changeView}/>
+       <DM user={user} mainViewUser={mainViewUser} user={user} changeView={changeView}/>
       )
     }
     if (view === 'inbox') {
@@ -56,7 +56,7 @@ export function MainViewBody(props) {
         
           <div className="d-flex flex-row justify-content-between flex-wrap">
             { allUsers.filter(u => u.username !== user.username)
-              .map( u => <UserThumbPreview key={u.id} user={u} changeView={changeView}/> ) }
+              .map( u => <UserThumbPreview key={u.username} user={u} changeView={changeView}/> ) }
           </div>
        
     );
