@@ -2,11 +2,11 @@
 const Sequelize = require('sequelize');
 const dummyUserData = require('../client/src/dummy-user-data');
 
-const host = 'localhost';
+const host = process.env.DB_HOST ||'localhost';
 const user = process.env.DB_USER || 'root';
-const port = 3306;
-const password = '';
-const database = 'jokeMeOff';
+const port = process.env.DB_PORT ||3306;
+const password = process.env.DB_PASSWORD ||'';
+const database = process.env.DB_DATABASE ||'jokeMeOff';
 
 const connection = new Sequelize(database, user, password, {
   dialect: 'mysql',
