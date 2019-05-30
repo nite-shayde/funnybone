@@ -14,8 +14,15 @@ const connection = new Sequelize(database, user, password, {
 });
 
 const Users = connection.define('users', {
-    name: Sequelize.STRING,
-    userName: Sequelize.STRING,
+    name: { 
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    userName: { 
+      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false,
+    },
     profilePic: Sequelize.STRING 
 })
 const Messages = connection.define('messages', {
@@ -25,29 +32,37 @@ const Messages = connection.define('messages', {
   toId: Sequelize.INTEGER
 })
 
-connection.sync()
+connection.sync({ force: false })
   .then((result) => {
     console.log(result, 'are we in the data??????');
-  }).catch((err) => {
+  })
+  .catch((err) => {
     console.log(err, '!!!!!!!!!!!!!');
   });
 
-  Users.create({
+  Users.bulkCreate([
+  {
     name: 'Kalkidan',
     userName: 'KalkidanMulatu',
     profilePic: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-0/p110x80/48359292_220566528875309_249279966284349440_n.jpg?_nc_cat=104&_nc_ht=scontent-dfw5-1.xx&oh=c87c3905e336d7235594112d4b2d3db0&oe=5D91B150' 
-  })
-  Users.create({
+  },
+  {
     name: 'Kelly',
     userName: 'KellyT',
     profilePic: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-0/p110x80/48359292_220566528875309_249279966284349440_n.jpg?_nc_cat=104&_nc_ht=scontent-dfw5-1.xx&oh=c87c3905e336d7235594112d4b2d3db0&oe=5D91B150' 
-  })
-  Users.create({
+  },
+  {
     name: 'Ezra',
     userName: 'EzraMoges',
     profilePic: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-0/p110x80/48359292_220566528875309_249279966284349440_n.jpg?_nc_cat=104&_nc_ht=scontent-dfw5-1.xx&oh=c87c3905e336d7235594112d4b2d3db0&oe=5D91B150' 
+  }
+], {
+  validate: true,
+  ignoreDuplicates: true,
+})
+  .then(user => {
+    console.log(user.dataValues);
   })
-
 
   module.exports.connection = connection;
   module.exports.Messages = Messages;
