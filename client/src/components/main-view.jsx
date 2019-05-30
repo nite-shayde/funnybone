@@ -24,7 +24,10 @@ function MainView(props) {
         
         <div className="card text-white bg-primary mb-3">
           <div className="card-body">
-            {allUsers.filter(u => u.id !== user.id).map( user => <UserThumbPreview key={user.id} user={user} changeView={changeView}/> )}
+          <div className="d-flex flex-row">
+            { allUsers.filter(u => u.id !== user.id)
+              .map( u => <UserThumbPreview key={u.id} user={u} changeView={changeView}/> ) }
+          </div>
           </div>
         </div>
     );
