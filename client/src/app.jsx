@@ -22,7 +22,7 @@ function App() {
   <div className="container">
     <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-warning">dis the nav bar</nav>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">dis the nav bar</nav>
    
     <div id="main-contents" className="row">
 
@@ -33,7 +33,7 @@ function App() {
 
       <div id="main-col" className="col-md-6">
         {/* Compose message component */}
-        <MessageComposer />
+        {/* <MessageComposer /> */}
         <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers}/>
         {/*  */}
       </div>

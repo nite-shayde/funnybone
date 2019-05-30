@@ -22,9 +22,12 @@ function MainView(props) {
     // or just show the browse user view
     return (
         
-        <div className="card text-white bg-primary mb-3">
+        <div className="card text-white bg-secondary mb-3">
           <div className="card-body">
-            {allUsers.filter(u => u.id !== user.id).map( user => <UserThumbPreview key={user.id} user={user} changeView={changeView}/> )}
+          <div className="d-flex flex-row justify-content-between">
+            { allUsers.filter(u => u.id !== user.id)
+              .map( u => <UserThumbPreview key={u.id} user={u} changeView={changeView}/> ) }
+          </div>
           </div>
         </div>
     );
