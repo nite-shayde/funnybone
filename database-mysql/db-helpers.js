@@ -9,17 +9,19 @@ const getUsers = () => {
   // getUsers();
   //helper to get all message from a user based on userId 
  const getConversation = (userAid, userBid) => {
-    // Messages.findAll({ where: { 
-    //                     fromUserId: [ userAid, userBid], 
-    //                         toUserId: [userAid, userBid]
-    //                 } })
-    //                 .then(messages => {
-    //                     console.log(messages)
-    //   })
+    Messages.findAll({ where: { 
+                        fromId: [ userAid, userBid], 
+                            toId: [userAid, userBid]
+                    }, order: [['createdAt', "DESC"]] })
+                    .then(messages => {
+                        console.log(messages)
+      }).catch((err) => {
+          console.log(err);
+      })
       
 
  }
-
+getConversation(9, 7);
 // db findAll :
 
 // WHERE
@@ -33,6 +35,7 @@ const saveUser = (user) => {
    return Users.create(user)
 }
 
+
 //saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", profilePicURL: "pizzahut.com"})
 const saveMessage = (message) => {
   return  Messages.create(message)
@@ -41,5 +44,12 @@ const saveMessage = (message) => {
 // dummyMessages.forEach((message) => {
 //     saveMessage(message);
 // })
+// saveMessage(dummyMessages[3]);
+
 module.exports.getUsers = getUsers;
+module.exports.getConversation = getConversation;
+module.exports.saveMessage = saveMessage;
+module.exports.saveUser = saveUser;
+
+
   
