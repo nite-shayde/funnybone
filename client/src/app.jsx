@@ -19,8 +19,10 @@ function App() {
 
   useEffect(()=>{
     axios.get('/api/user').then((response) => {
-      setAllUsers(response.data)
-      setUser(response.data[0]);
+      if (response.data.length) {
+        setAllUsers(response.data)
+        setUser(response.data[0]);
+      }
     })
   }, [allUsers.length])
 
