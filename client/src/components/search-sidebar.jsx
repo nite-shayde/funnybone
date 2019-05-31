@@ -12,9 +12,9 @@ function SearchSideBar(props) {
 
     function doSearch() {
       if (query) {
-        // const contentTypeOnSearch = contentType;
+        const contentTypeOnSearch = contentType;
         axios.post('api/content', { query, contentType }).then (response => {
-          // setContentType(contentTypeOnSearch); //this ensures that content for the data coming is reset to what it was in case use changes before response
+          setContentType(contentTypeOnSearch); //this ensures that content for the data coming is reset to what it was in case use changes before response
           setList(response.data)
         }).catch(err => {
           console.error(err)
@@ -29,6 +29,7 @@ function SearchSideBar(props) {
     function selectType(e) {
       setList([]);
       setContentType(e.target.name);
+      console.log(e.target.name);
     }
 
     return (
