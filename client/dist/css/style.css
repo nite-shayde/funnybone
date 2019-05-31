@@ -39,3 +39,7 @@
    border-radius: 3px;
    max-height: 200px;
 }
+
+#search-content {
+  max-height: 580px;
+}

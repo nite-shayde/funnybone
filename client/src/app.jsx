@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import dummyUserData from './dummy-user-data';
 import UserSidebarInfo from './components/user-sidebar-info.jsx'
-// import MessageComposer from './components/message-composer.jsx';
-import SideBar from './components/side-bar.jsx';
+import SearchSideBar from './components/search-sidebar.jsx';
 import { MainView } from './components/main-view.jsx';
 import axios from 'axios';
-import { userInfo } from 'os';
 
 
 function App() {
@@ -50,20 +48,19 @@ function App() {
       <div id="main-contents" className="row">
 
         <div id="left-side-bar" className="col-md-3">
-
           <UserSidebarInfo user={user} />
         </div>
 
-        <div id="main-col" className="col-md-6">
+        <div id="main-view" className="col-md-6">
           {/* Compose message component */}
           {/* <MessageComposer /> */}
           <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} />
           {/*  */}
         </div>
 
-        <div id="left-side-bar" className="col-md-3">
+        <div id="right-side-bar" className="col-md-3">
           {/* RIGHT BAR COMPONENT */}
-          <SideBar />
+          <SearchSideBar />
         </div>
 
       </div>
