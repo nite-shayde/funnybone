@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import dummyUserData from './dummy-user-data';
 import UserSidebarInfo from './components/user-sidebar-info.jsx'
-// import MessageComposer from './components/message-composer.jsx';
-import SideBar from './components/side-bar.jsx';
+import SearchSideBar from './components/search-sidebar.jsx';
 import { MainView } from './components/main-view.jsx';
 import axios from 'axios';
-import { userInfo } from 'os';
 
 
 function App() {
@@ -50,27 +48,22 @@ function App() {
       <div id="main-contents" className="row">
 
         <div id="left-side-bar" className="col-md-3">
-
           <UserSidebarInfo user={user} />
         </div>
 
-        <div id="main-col" className="col-md-6">
-          {/* Compose message component */}
-          {/* <MessageComposer /> */}
+        <div id="main-view" className="col-md-6">  
           <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} />
-          {/*  */}
         </div>
 
-        <div id="left-side-bar" className="col-md-3">
-          {/* RIGHT BAR COMPONENT */}
-          <SideBar />
+        <div id="right-side-bar" className="col-md-3">
+          <SearchSideBar />
         </div>
 
       </div>
 
       <div>
         <select onChange={(e) => { setUserByUsername(e.target.value) }}>
-          {allUsers.map(u => <option value={u.username}>{u.name}</option>)}
+          {allUsers.map(u => <option key={u.id} value={u.username}>{u.name}</option>)}
         </select>
       </div>
 

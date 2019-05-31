@@ -6,7 +6,7 @@ function UserSidebarInfo(props) {
     const { name, username, interests, profilePicURL } = props.user
 
     return (
-        <div className="container">
+        <div className="">
             <div className="">
                 <img className="img-thumbnail img-md" src={profilePicURL} />
                 <h2>@{username}</h2>
