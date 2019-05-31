@@ -4,21 +4,29 @@ import UserSidebarInfo from './components/user-sidebar-info.jsx'
 // import MessageComposer from './components/message-composer.jsx';
 import SideBar from './components/side-bar.jsx';
 import { MainView } from './components/main-view.jsx';
+import axios from 'axios';
 
 
 function App() {
   // TAKE THIS LINE OUT
   const dummyData = dummyUserData.map( u => { u.interests = []; return u; } )
   
-  const [allUsers, setAllUsers] = useState(dummyData)
-  const [user, setUser ] = useState(allUsers[1]);
+  const [allUsers, setAllUsers] = useState([])
+  const [user, setUser ] = useState({ interests: [] }); 
   const [view, setView ] = useState("browse");
   const [mainViewUser, setMainViewUser] = useState(null);
 
+  useEffect(()=>{
+    axios.get('/api/user').then((response) => {
+      setAllUsers(response.data)
+      setUser(response.data[0]);
+    })
+  }, [allUsers.length])
 
-  function changeView(view, user) {
+
+  function changeView(view, mainViewUser) {
     setView(view);
-    setMainViewUser(user)
+    setMainViewUser(mainViewUser)
   }
 
   function setUserById(userId) {
