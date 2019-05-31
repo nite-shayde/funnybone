@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dummyUserData from './dummy-user-data';
 import UserSidebarInfo from './components/user-sidebar-info.jsx'
 // import MessageComposer from './components/message-composer.jsx';
@@ -19,6 +19,10 @@ function App() {
   function changeView(view, user) {
     setView(view);
     setMainViewUser(user)
+  }
+
+  function setUserById(userId) {
+    // all
   }
 
 
@@ -49,8 +53,18 @@ function App() {
 
     </div>
 
+    <div>
+      <select onChange={ (e)=>{ console.log(e.target.value) } }>
+        { allUsers.map( u =>  <option value={u.id}>{u.name}</option>)}
+      </select>
+    </div>
+
+
     <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
   </div> );
 }
+
+
+
 
 export default App;

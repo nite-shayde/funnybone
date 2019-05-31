@@ -1,26 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dummyMessageData from '../dummy-message-data';
+import axios from 'axios';
 
 function MessageComposer(props) {
     
-    const placeholder = 'you\'re not funny...\r\nbut you should still try';
-    const messages = dummyMessageData;
     const { user, mainViewUser } = props;
+    const [ conversation, setConversation ] = useState([]);
+    const [ inputText, setInputText ] = useState(null);
+    const placeholder = 'you\'re not funny...\r\nbut you should still try';
+    const startConversation = !conversation.length ? 'say something stupid...' : null;
+
+    useEffect(()=>{
+      axios.get(`api/message/${user.id},${mainViewUser.id}`, ).then( response => {
+        setConversation(response.data);
+      }).catch( err => {
+        console.error(err);
+      });
+    }, [conversation.length])
+
+    function sendMessage(){
+      if (inputText) {
+        const message = {
+          contentType: 'text',
+          content: inputText,
+          fromId: user.id,
+          toId: mainViewUser.id
+        }
+        axios.post('/api/message', message).then( response => {
+          console.log(response)
+        }).catch(err => {
+          console.error(err);
+        })
+      }
+    }
 
     return (
         // <div class="row justify-content-center">
         <div className="card text-white bg-primary mb-3">
           <div className="card-body"> 
-            userID: {user.id} | mainViewUserID: {mainViewUser.id}
+    
             <div id="conversation" className="p-3 mb-2 overflow-auto">
-              {messages.map( message => <Message key={message.content} message={message} parentProps={props}/>)}
+              { startConversation }
+              {conversation.map( message => <Message key={message.content} message={message} parentProps={props}/>)}
             </div>
 
             <form>
                 <label>
-                    <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setMessage(e.target.value)} />
+                    <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setInputText(e.target.value)} />
                 </label>            
-                <button id="text" type="button" className="btn btn-secondary">send</button>       
+                <button id="text" type="button" className="btn btn-secondary" onClick={ sendMessage }>send</button>       
             </form>
           </div>
         </div>
