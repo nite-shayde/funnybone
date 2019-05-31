@@ -11,12 +11,16 @@ function MessageComposer(props) {
     const startConversation = !conversation.length ? 'say something stupid...' : null;
 
     useEffect(()=>{
+      fetchConvo();
+    }, [conversation.length])
+
+    function fetchConvo() {
       axios.get(`api/message/${user.id},${mainViewUser.id}`, ).then( response => {
         setConversation(response.data);
       }).catch( err => {
         console.error(err);
       });
-    }, [conversation.length])
+    }
 
     function sendMessage(){
       if (inputText) {
@@ -27,7 +31,7 @@ function MessageComposer(props) {
           toId: mainViewUser.id
         }
         axios.post('/api/message', message).then( response => {
-          console.log(response)
+          fetchConvo();
         }).catch(err => {
           console.error(err);
         })

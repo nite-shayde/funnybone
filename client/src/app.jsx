@@ -5,6 +5,7 @@ import UserSidebarInfo from './components/user-sidebar-info.jsx'
 import SideBar from './components/side-bar.jsx';
 import { MainView } from './components/main-view.jsx';
 import axios from 'axios';
+import { userInfo } from 'os';
 
 
 function App() {
@@ -29,8 +30,12 @@ function App() {
     setMainViewUser(mainViewUser)
   }
 
-  function setUserById(userId) {
-    // all
+  // JUST FOR TESTING
+  function setUserByUsername(username) {
+    allUsers.forEach( u => {
+      if (u.username == username) setUser(u);
+    })
+    setView('browse');
   }
 
 
@@ -62,8 +67,8 @@ function App() {
     </div>
 
     <div>
-      <select onChange={ (e)=>{ console.log(e.target.value) } }>
-        { allUsers.map( u =>  <option value={u.id}>{u.name}</option>)}
+      <select onChange={ (e)=>{ setUserByUsername(e.target.value) } }>
+        { allUsers.map( u =>  <option value={u.username}>{u.name}</option>)}
       </select>
     </div>
 
