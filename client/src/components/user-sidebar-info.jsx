@@ -11,7 +11,7 @@ function UserSidebarInfo(props) {
                 <img className="img-thumbnail img-md" src={profilePicURL} />
                 <h2>@{username}</h2>
                 <h3>{name}</h3>
-                <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul>
+                {/* <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul> */}
             </div>
         </div>
     );
