@@ -25,7 +25,7 @@ function Profile(props) {
                     <h4>@{username}</h4>
                     <h3>{name}</h3>
                     <button data-target="dm" type="button" className="btn btn-sm btn-success" onClick={handleClick}>slide into {username}'s DM </button>
-                    <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul>
+                    {/* <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul> */}
                 </div>
             </div>
        
