@@ -1,16 +1,23 @@
 const express = require('express');
-const helpers = require('../../database-mysql/db-helpers');
+const db = require('../../database-mysql/db-helpers');
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/:userAid,:userBid', function (req, res) {
     // res.send('GET handler for /api/message route.');
-
+    const { userAid, userBid } = req.params;
+    db.getConversation(userAid, userBid).then( results => {
+        res.send(results)
+    }).catch( err => {
+        console.error(err);
+        res.sendStatus(500)
+    });
 });
 
 router.post('/', function (req, res) {
     // res.send('POST handler for /api/message route.');
-    helpers.saveMessage()
+    const message = req.body;
+    db.saveMessage(message)
         .then((message) => {
             res.send(message);
         }).catch((error) => {
