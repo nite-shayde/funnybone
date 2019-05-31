@@ -10,14 +10,14 @@ import { userInfo } from 'os';
 
 function App() {
   // TAKE THIS LINE OUT
-  const dummyData = dummyUserData.map( u => { u.interests = []; return u; } )
-  
+  const dummyData = dummyUserData.map(u => { u.interests = []; return u; })
+
   const [allUsers, setAllUsers] = useState([])
-  const [user, setUser ] = useState({ interests: [] }); 
-  const [view, setView ] = useState("browse");
+  const [user, setUser] = useState({ interests: [] });
+  const [view, setView] = useState("browse");
   const [mainViewUser, setMainViewUser] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('/api/user').then((response) => {
       if (response.data.length) {
         setAllUsers(response.data)
@@ -34,49 +34,49 @@ function App() {
 
   // JUST FOR TESTING
   function setUserByUsername(username) {
-    allUsers.forEach( u => {
+    allUsers.forEach(u => {
       if (u.username == username) setUser(u);
     })
     setView('browse');
   }
 
 
-  return ( 
-  <div className="container">
-    <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
+  return (
+    <div className="container">
+      <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">dis the nav bar</nav>
-   
-    <div id="main-contents" className="row">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">dis the nav bar</nav>
 
-      <div id="left-side-bar" className="col-md-3">
-     
-      <UserSidebarInfo user={user}  />
-      </div>
+      <div id="main-contents" className="row">
 
-      <div id="main-col" className="col-md-6">
-        {/* Compose message component */}
-        {/* <MessageComposer /> */}
-        <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers}/>
-        {/*  */}
-      </div>
+        <div id="left-side-bar" className="col-md-3">
 
-      <div id="left-side-bar" className="col-md-3">
+          <UserSidebarInfo user={user} />
+        </div>
+
+        <div id="main-col" className="col-md-6">
+          {/* Compose message component */}
+          {/* <MessageComposer /> */}
+          <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} />
+          {/*  */}
+        </div>
+
+        <div id="left-side-bar" className="col-md-3">
           {/* RIGHT BAR COMPONENT */}
-         <SideBar />
+          <SideBar />
+        </div>
+
       </div>
 
-    </div>
-
-    <div>
-      <select onChange={ (e)=>{ setUserByUsername(e.target.value) } }>
-        { allUsers.map( u =>  <option value={u.username}>{u.name}</option>)}
-      </select>
-    </div>
+      <div>
+        <select onChange={(e) => { setUserByUsername(e.target.value) }}>
+          {allUsers.map(u => <option value={u.username}>{u.name}</option>)}
+        </select>
+      </div>
 
 
-    <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
-  </div> );
+      <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
+    </div>);
 }
 
 
