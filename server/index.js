@@ -7,12 +7,22 @@ const contentRoute = require('./routes/content-route');
 const { Users } = require('../database-mysql/index');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const cookieParse = require('cookie-parser');
+const session = require('express-session');
 
 
 const app = express();
 
-// middleware
+// MIDDLEWARE
 app.use(bodyParser.json());
+app.use(cookieParse());
+app.use(session({ 
+  secret: 'your funny bone is not really on your elbow wink wink',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// AUTH MIDDLEWARE
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(
@@ -36,13 +46,17 @@ passport.serializeUser(function(user, done) {
 });
  
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
+  Users.findOne({ where: { id }}).then((user) => {
+    done(null, user);
+  }).catch(err => done(err, null));
+ 
+
 });
 
+// const authenticate = ;
 // add static assests
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')))
+
 
 // ROUTES
 app.use('/api/user', userRoute);
@@ -50,20 +64,15 @@ app.use('/api/message', messageRoute);
 app.use('/api/content', contentRoute);
 
 
-app.get('/', (req, res) => {
-  console.log(req.method, req.url)
-  res.send('here comes the home page...')
-});
-
 app.get('/login', (req, res) => {
-  res.send("Invalid username or password");
+  res.send("This is the login page");
 })
+
 
 app.post('/login', 
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
-    
   });
 
 const PORT = process.env.PORT || 8080
