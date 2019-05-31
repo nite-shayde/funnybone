@@ -10,6 +10,7 @@ module.exports = [
     //   'The Office',
     //   'You can leave now'
     // ],
+    password: "password",
     profilePicURL: 'https://i.cdn.turner.com/adultswim/big/img/2018/01/09/RickMorty2_Marathon_2.jpg'
   },
   {
@@ -22,6 +23,7 @@ module.exports = [
     //   'The Office',
     //   'You can leave now'
     // ],
+    password: "password2",
     profilePicURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT317MbQKwgjeBWflWnWxj48sgt9WVn8JHVcijUxmQsywq4UaDz'
   },
   {
@@ -34,6 +36,7 @@ module.exports = [
     //   'Michelle Wolf',
     //   'Bobs Burgers',
     // ],
+    password: "password3",
     profilePicURL: 'https://pixel.nymag.com/imgs/daily/vulture/2016/02/12/recaps/12-bobs-burgers.w700.h700.jpg'
   },
   {
@@ -47,6 +50,7 @@ module.exports = [
     //   'You can leave now',
 
     // ],
+    password: "password4",
     profilePicURL: 'https://yt3.ggpht.com/a-/AAuE7mDLgh7_CBbjaHznWKj-Sb4HjTRFPc7N3ahdpQ=s900-mo-c-c0xffffffff-rj-k-no'
   },
   {
@@ -54,6 +58,7 @@ module.exports = [
     name: 'Kalkidan',
     username: 'KalkidanMulatu',
     email: 'kalki@gmail.com',
+    password: "password5",
     profilePicURL: 'https://pbs.twimg.com/profile_images/423994086387769345/LME5ldQY.jpeg' 
   },
   {
@@ -61,6 +66,7 @@ module.exports = [
     name: 'Kelly',
     username: 'KellyT',
     email: 'kelly@gmail.com',
+    password: "password6",
     profilePicURL: 'https://vignette.wikia.nocookie.net/spaceballs/images/2/25/Dark_Helmet.jpg/revision/latest?cb=20181223231601' 
   },
   {
@@ -68,6 +74,7 @@ module.exports = [
     name: 'Ezra',
     username: 'EzraMoges',
     email: 'ezuyea@gmail.com',
+    password: "password7",
     profilePicURL: 'https://pbs.twimg.com/profile_images/538926415232528384/t-Gna4-6_400x400.jpeg' 
   }
 ];
