@@ -13,10 +13,8 @@ export function MainView(props) {
     changeView(target, mainViewUser)
   }
 
-
   return (
     <div className="card text-white bg-secondary mb-3">
-    
         
         <MainViewHeader getViewTarget={getViewTarget} view={view}/>
        
@@ -26,10 +24,8 @@ export function MainView(props) {
     
     </div>
   )
-
-
-
 }
+
 
 export function MainViewBody(props) {
 

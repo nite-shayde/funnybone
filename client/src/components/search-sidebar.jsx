@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function SearchSideBar(props) {
@@ -6,9 +6,15 @@ function SearchSideBar(props) {
     const [ list, setList ] = useState([]);
     const [ contentType, setContentType ] = useState('gif');
 
+    // useEffect(()=>{
+    //   if(query) doSearch();
+    // }, contentType)
+
     function doSearch() {
       if (query) {
+        // const contentTypeOnSearch = contentType;
         axios.post('api/content', { query, contentType }).then (response => {
+          // setContentType(contentTypeOnSearch); //this ensures that content for the data coming is reset to what it was in case use changes before response
           setList(response.data)
         }).catch(err => {
           console.error(err)
@@ -23,7 +29,6 @@ function SearchSideBar(props) {
     function selectType(e) {
       setList([]);
       setContentType(e.target.name);
-      doSearch();
     }
 
     return (
@@ -49,45 +54,51 @@ function SearchSideBar(props) {
 function ContentList(props) {
 
   const { list, contentType } = props;
+  let srcList = [];
 
   if (contentType === 'video') {
-    return (
-      <div>
-        Videos:
-        {list.map((video) => <YoutubeItem video={video}/>)}
-      </div>
-    )
+    srcList = list.map(vid => `http://www.youtube.com/embed/${vid.id.videoId}`)
   } else if (contentType === 'gif') {
-    return (
-      <div>
-        GIFFY:
-        {list.map((gif) =>  <GiffyItem gif={gif}/>)}
-      </div>
-    )
+    srcList = list.map( gif => gif.images.downsized_medium.url.replace(/media[0-9]/, 'i'))
   }
-}
 
-function GiffyItem(props) {
-  const { gif  } = props;
-  console.log(gif)
-  const gifSource = gif.images.downsized_medium.url.replace(/media[0-9]/, 'i');
   return (
-    <div><img className="img-md mb-2" src={gifSource} /></div>
-  );
+    <div>
+      {srcList.map( src => <ContentListItem key={src} src={src}/>)}
+    </div>
+  )
 }
 
-function YoutubeItem(props) {
-  const { video } = props;
-  if (video.id) {
-    const { videoId } = video.id;
-    return (
-      <div className="mb-2">
-        <iframe src={`http://www.youtube.com/embed/${videoId}`} width="auto" height="auto" frameborder="0" allowfullscreen></iframe>
-      </div>
-    );
-  }
-  return <span />
+
+function ContentListItem(props) {
+  const { src } = props;
+  return (
+    <iframe className="container-fluid" src={src} frameBorder="0" scrolling="no" allowFullScreen></iframe>
+  )
 }
+
+
+// function GiffyItem(props) {
+//   const { gif  } = props;
+//   console.log(gif)
+//   const gifSource = gif.images.downsized_medium.url.replace(/media[0-9]/, 'i');
+//   return (
+//     <div><img className="img-md mb-2" src={gifSource} /></div>
+//   );
+// }
+
+// function YoutubeItem(props) {
+//   const { video } = props;
+//   if (video.id) {
+//     const { videoId } = video.id;
+//     return (
+//       <div className="mb-2">
+//         <iframe src={`http://www.youtube.com/embed/${videoId}`} width="auto" height="auto" frameborder="0" allowfullscreen></iframe>
+//       </div>
+//     );
+//   }
+//   return <span />
+// }
 
 
 export default SearchSideBar;

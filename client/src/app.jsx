@@ -51,15 +51,11 @@ function App() {
           <UserSidebarInfo user={user} />
         </div>
 
-        <div id="main-view" className="col-md-6">
-          {/* Compose message component */}
-          {/* <MessageComposer /> */}
+        <div id="main-view" className="col-md-6">  
           <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} />
-          {/*  */}
         </div>
 
         <div id="right-side-bar" className="col-md-3">
-          {/* RIGHT BAR COMPONENT */}
           <SearchSideBar />
         </div>
 
@@ -67,7 +63,7 @@ function App() {
 
       <div>
         <select onChange={(e) => { setUserByUsername(e.target.value) }}>
-          {allUsers.map(u => <option value={u.username}>{u.name}</option>)}
+          {allUsers.map(u => <option key={u.id} value={u.username}>{u.name}</option>)}
         </select>
       </div>
 
