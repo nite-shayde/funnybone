@@ -29,8 +29,9 @@ const Users = connection.define('users', {
       unique: true,
       allowNull: false,
     },
+    bio: Sequelize.STRING(500),
     password: Sequelize.STRING,
-    profilePicURL: Sequelize.STRING 
+    profilePicURL: Sequelize.STRING(500) 
 })
 const Messages = connection.define('messages', {
   contentType: Sequelize.STRING,

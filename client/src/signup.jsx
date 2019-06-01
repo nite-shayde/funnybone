@@ -73,7 +73,7 @@ function Signup() {
                             </div>
                             <div class="form-group">
                                 <label for="profileBio">Bio</label>
-                                <textarea class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
+                                <textarea maxlength="499" class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
                             </div>
                             <div class="form-group">
                                 <label for="profilePicUpload">Upload A Profile Picture</label>
