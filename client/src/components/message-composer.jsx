@@ -39,7 +39,6 @@ function MessageComposer(props) {
     }
 
     return (
-        // <div class="row justify-content-center">
         <div className="card text-white bg-primary mb-3">
           <div className="card-body"> 
     
@@ -47,13 +46,15 @@ function MessageComposer(props) {
               { startConversation }
               {conversation.map( message => <Message key={message.content} message={message} parentProps={props}/>)}
             </div>
-
-            <form>
-                <label>
-                    <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setInputText(e.target.value)} />
-                </label>            
-                <button id="text" type="button" className="btn btn-secondary" onClick={ sendMessage }>send</button>       
-            </form>
+            <div className="row">
+              <form className="col-md-8">
+                  <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setInputText(e.target.value)} />      
+                  <button id="text" type="button" className="btn btn-secondary flex-shrink-1" onClick={ sendMessage }>send</button>       
+              </form>
+              <div className="col-md-3 border">
+                {/* <iframe className="container-fluid" src="hello" frameBorder="0" scrolling="no" allowFullScreen></iframe> */}
+              </div>
+            </div>
           </div>
         </div>
     );

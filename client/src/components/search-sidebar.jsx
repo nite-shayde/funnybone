@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function SearchSideBar(props) {
+    const { changeSelectedContent } = props;
     const [ query, setQuery] = useState(null);
     const [ list, setList ] = useState([]);
     const [ contentType, setContentType ] = useState('gif');
@@ -44,7 +45,7 @@ function SearchSideBar(props) {
             <button onClick={clickSearch} className="btn"><img src="./img/search-icon.png" className="img-xxs ml-2" /></button>
           </div>
           <div className="overflow-auto" id="search-content">
-            <ContentList list={list} contentType={contentType}/>
+            <ContentList list={list} contentType={contentType} changeSelectedContent={changeSelectedContent}/>
           </div>
         </div>
 
@@ -54,27 +55,38 @@ function SearchSideBar(props) {
 
 function ContentList(props) {
 
-  const { list, contentType } = props;
+  const { list, contentType, changeSelectedContent } = props;
   let srcList = [];
-
+  console.log(list)
   if (contentType === 'video') {
-    srcList = list.map(vid => `http://www.youtube.com/embed/${vid.id.videoId}`)
+    srcList = list.map(vid => { return { vidId: vid.id.videoId, src: vid.snippet.thumbnails.medium.url } }  ) 
   } else if (contentType === 'gif') {
-    srcList = list.map( gif => gif.images.downsized_medium.url.replace(/media[0-9]/, 'i'))
+    srcList = list.map(gif => { return { src: gif.images.downsized_medium.url.replace(/media[0-9]/, 'i') } }  )  
   }
 
   return (
-    <div>
-      {srcList.map( src => <ContentListItem key={src} src={src}/>)}
-    </div>
-  )
+    <div> 
+      {srcList.map(item => <ContentListItem vidId={item.vidId} src={item.src}  changeSelectedContent={changeSelectedContent} key={item.vidId} />  ) } 
+     </div> 
+    )
 }
 
 
+ //`http://www.youtube.com/embed/${vid.id.videoId}`
+
 function ContentListItem(props) {
-  const { src } = props;
-  return (
-    <iframe className="container-fluid" src={src} frameBorder="0" scrolling="no" allowFullScreen></iframe>
+  const { src, vidId, changeSelectedContent } = props;
+
+  function handleClick() {
+    changeSelectedContent(src, vidId)
+    console.log(src, vidId)
+  }
+
+  return ( 
+    <div onClick={handleClick}>
+      <img className="img-md" src={src} />
+      {/* <iframe  className="container-fluid" src={src} frameBorder="0" scrolling="no" allowFullScreen></iframe> */}
+    </div>
   )
 }
 

@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState({ interests: [] });
   const [view, setView] = useState("browse");
   const [mainViewUser, setMainViewUser] = useState(null);
+  const [selectedContent, setSelectedContent] = useState({});
 
   useEffect(() => {
     axios.get('/api/user').then((response) => {
@@ -24,6 +25,9 @@ function App() {
     })
   }, [allUsers.length])
 
+  function changeSelectedContent(src, vidId) {
+    setSelectedContent({ src, vidId })
+  }
 
   function changeView(view, mainViewUser) {
     setView(view);
@@ -56,7 +60,7 @@ function App() {
         </div>
 
         <div id="right-side-bar" className="col-md-3">
-          <SearchSideBar />
+          <SearchSideBar changeSelectedContent={changeSelectedContent}/>
         </div>
 
       </div>
@@ -69,6 +73,8 @@ function App() {
 
 
       <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
+
+
     </div>);
 }
 
