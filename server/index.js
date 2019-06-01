@@ -4,11 +4,12 @@ const path = require('path');
 const userRoute = require('./routes/user-route');
 const messageRoute = require('./routes/message-route')
 const contentRoute = require('./routes/content-route');
+const { loginRoute, passport } = require('./routes/login-route')
 const { Users } = require('../database-mysql/index');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const cookieParse = require('cookie-parser');
 const session = require('express-session');
+const morgan = require('morgan')
+
 
 
 const app = express();
@@ -21,40 +22,25 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(morgan());
 
 // AUTH MIDDLEWARE
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    Users.findOne({ where: { username: username } })
-    .then(user => {
-      if (!user) { 
-        return done(null, false);
-      }
-      if (user.password !== password) {
-         return done(null, false); 
-      }
-      return done(null, user);
-    }).catch((err) => {
-      return done(err);
-    })
+
+
+
+app.get('/', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    // res.send('here ur home page authenticato');
+    next();
+  } else {
+    // UNCOMMENT FOR AUTHORIZATION OF HOMEPAGE
+    // res.redirect('/login');
+    next();
   }
-));
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
- 
-passport.deserializeUser(function(id, done) {
-  Users.findOne({ where: { id }}).then((user) => {
-    done(null, user);
-  }).catch(err => done(err, null));
- 
+})
 
-});
-
-// const authenticate = ;
-// add static assests
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
 
@@ -62,18 +48,10 @@ app.use(express.static(path.join(__dirname, '../client/dist')))
 app.use('/api/user', userRoute);
 app.use('/api/message', messageRoute);
 app.use('/api/content', contentRoute);
+app.use('/login', loginRoute);
 
 
-app.get('/login', (req, res) => {
-  res.send("This is the login page");
-})
 
-
-app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
 
 const PORT = process.env.PORT || 8080
 
