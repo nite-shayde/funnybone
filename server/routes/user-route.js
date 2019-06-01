@@ -17,12 +17,9 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
     // res.send('POST handler for /api/user route.');
     console.log(req.body);
-    helpers.saveUser({
-        name: req.body.username,
-        username: req.body.displayName,
-        email: req.body.email,
-        profilePicURL: req.body.profilePicURL
-    }).then((results) => {
+    const user = saveUser(req.body);
+    helpers.saveUser(user).then((results) => {
+        console.log(results);
         res.redirect('/');
     }).catch((error) => {
         console.log(error);
