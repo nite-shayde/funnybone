@@ -59,17 +59,17 @@ function Signup() {
                                 <input className="form-control" name="username" id="username" onChange={handleChange} />
                             </div>
                             <div className="form-group">
-                                <label for="display">Display Name</label>
-                                <input type="text" className="form-control" name="displayName" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
+                                <label for="name">Name</label>
+                                <input type="text" className="form-control" name="name" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
                             </div>
                             <div className="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label for="email">Email address</label>
                                 <input type="email" className="form-control" name="email" id="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email" />
                             </div>
                             <div className="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
-                                <small id="passwordHelp" className="form-text text-muted">I hope your password works for the email ;)</small>
+                                <label for="password">Password</label>
+                                <input className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
+                                <small id="password" className="form-text text-muted">I hope your password works for the email ;)</small>
                             </div>
                             {/* <div class="form-group">
                                 <label for="profileBio">Bio</label>

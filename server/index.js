@@ -16,8 +16,9 @@ const app = express();
 
 // MIDDLEWARE
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParse());
-app.use(session({ 
+app.use(session({
   secret: 'your funny bone is not really on your elbow wink wink',
   resave: false,
   saveUninitialized: false
@@ -55,4 +56,4 @@ app.use('/login', loginRoute);
 
 const PORT = process.env.PORT || 8080
 
-app.listen(PORT, () => { console.log(`listening on port ${PORT}`)});
+app.listen(PORT, () => { console.log(`listening on port ${PORT}`) });
