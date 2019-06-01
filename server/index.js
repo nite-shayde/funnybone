@@ -31,15 +31,29 @@ app.use(passport.session());
 
 
 app.get('/', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    // res.send('here ur home page authenticato');
+  if (req.isAuthenticated()) {  
     next();
   } else {
-    // UNCOMMENT FOR AUTHORIZATION OF HOMEPAGE
     res.redirect('/login');
-    next();
   }
 })
+
+const verifySession =  (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+}
+
+app.get('/login', verifySession);
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+
 
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
