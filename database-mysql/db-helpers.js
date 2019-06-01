@@ -22,20 +22,22 @@ const getUsers = () => {
  }
 // getConversation(9, 7);
 
-const generateHash = (password) => { 
-  let salt = bcrypt.genSaltSync(saltRounds);
-  return bcrypt.hashSync(password, salt);
-}
-
-// const validatePassword = (password) => {
-//   return bcrypt.compareSync(password, generateHash(password));
+// const generateHash = (password) => { 
+//   let salt = bcrypt.genSaltSync(saltRounds);
+//   return bcrypt.hashSync(password, salt);
 // }
 
+const validatePassword = (password) => {
+  return bcrypt.compareSync(password, generateHash(password));
+}
+
 const saveUser = (user) => {
+  let salt = bcrypt.genSaltSync(saltRounds);
+  user.password = bcrypt.hashSync(user.password, salt);
    return Users.create(user)
 }
 
-//saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", password: generateHash("password123"), profilePicURL: "pizzahut.com"})
+saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", password: "password123", profilePicURL: "pizzahut.com"})
 const saveMessage = (message) => {
   return  Messages.create(message)
 }
@@ -49,7 +51,7 @@ module.exports.getUsers = getUsers;
 module.exports.getConversation = getConversation;
 module.exports.saveMessage = saveMessage;
 module.exports.saveUser = saveUser;
-module.exports.generateHash = generateHash;
+//module.exports.generateHash = generateHash;
 module.exports.validatePassword = validatePassword;
 
 
