@@ -5,7 +5,6 @@ const userRoute = require('./routes/user-route');
 const messageRoute = require('./routes/message-route')
 const contentRoute = require('./routes/content-route');
 const { loginRoute, passport } = require('./routes/login-route')
-const { Users } = require('../database-mysql/index');
 const cookieParse = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan')
@@ -37,7 +36,7 @@ app.get('/', (req, res, next) => {
     next();
   } else {
     // UNCOMMENT FOR AUTHORIZATION OF HOMEPAGE
-    // res.redirect('/login');
+    res.redirect('/login');
     next();
   }
 })

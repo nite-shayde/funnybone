@@ -3,6 +3,7 @@ const helpers = require('../../database-mysql/db-helpers');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const { Users } = require('../../database-mysql/index');
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
