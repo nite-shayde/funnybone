@@ -6,9 +6,10 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 const getUsers = (user) => {
-  return Users.findOne({ where: { id: user.id }}).then( () => {
+  // return Users.findOne({ where: { id: user.id }}).then( () => {
     return Users.findAll({ where: { id: { [Op.ne]: user.id }} })
-  }).then( results => {
+  // })
+  .then( results => {
     return { user, allUsers: results}
   })
  
