@@ -11,7 +11,7 @@ function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [bio, setBio] = useState('');
-    const [profilePic, setProfilePic] = useState('')
+    const [profilePicURL, setProfilePicURL] = useState('')
 
     // object containing set functions for all states
     // key for all === state trying to set
@@ -22,7 +22,7 @@ function Signup() {
         email: setEmail,
         password: setPassword,
         bio: setBio,
-        profilePic: setProfilePic
+        profilePicURL: setProfilePicURL
     }
 
 
@@ -71,15 +71,17 @@ function Signup() {
                                 <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
                                 <small id="passwordHelp" className="form-text text-muted">I hope your password works for the email ;)</small>
                             </div>
-                            <div class="form-group">
+                            {/* <div class="form-group">
                                 <label for="profileBio">Bio</label>
                                 <input class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
-                            </div>
+                            </div> */}
                             <div class="form-group">
                                 <label for="profilePicUpload">Upload A Profile Picture</label>
-                                <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" />
+                                <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
+                                {!profilePicURL || <img src={profilePicURL} className="img-sm" />}
+                                {/* <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" /> */}
                             </div>
-                            <button type="submit" name="Sign Up" className="btn btn-primary" >Sign Up</button>
+                            <button type="submit" className="btn btn-primary" >Sign Up</button>
                         </fieldset>
                     </form>
                 </div>
