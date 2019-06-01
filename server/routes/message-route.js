@@ -14,6 +14,16 @@ router.get('/:userAid,:userBid', function (req, res) {
     });
 });
 
+router.get('/:userId', (req, res) => {
+    const { userId } = req.params;
+    db.getInbox(userId).then (results => {
+        res.send(results)
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    })
+})
+
 router.post('/', function (req, res) {
     // res.send('POST handler for /api/message route.');
     const message = req.body;

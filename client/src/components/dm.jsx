@@ -1,7 +1,5 @@
 import React from 'react';
 import MessageComposer from './message-composer.jsx';
-import { MainViewHeader } from './main-view.jsx';
-
 
 
 function DM(props) {

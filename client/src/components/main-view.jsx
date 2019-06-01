@@ -3,6 +3,7 @@ import UserThumbPreview from './user-thumb-preview.jsx';
 import DM from './dm.jsx';
 import dummyUserData from '../dummy-user-data';
 import Profile from './profile.jsx';
+import Inbox from './inbox.jsx';
 
 
 export function MainView(props) {
@@ -44,7 +45,7 @@ export function MainViewBody(props) {
     }
     if (view === 'inbox') {
       return (
-        <div>dis here ur inbox</div>
+        <Inbox user={user} allUsers={allUsers} changeView={changeView} />
       )
     }
     // or just show the browse user view

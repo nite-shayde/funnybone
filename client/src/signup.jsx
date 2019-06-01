@@ -71,10 +71,10 @@ function Signup() {
                                 <input className="form-control" type="password" name="password" id="password" onChange={handleChange} placeholder="Password" />
                                 <small id="password" className="form-text text-muted">I hope your password works for the email ;)</small>
                             </div>
-                            {/* <div class="form-group">
+                            <div class="form-group">
                                 <label for="profileBio">Bio</label>
-                                <input class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
-                            </div> */}
+                                <textarea class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
+                            </div>
                             <div class="form-group">
                                 <label for="profilePicUpload">Upload A Profile Picture</label>
                                 <input type="text" className="form-control" name="profilePicURL" id="profilePicURL" onChange={handleChange} placeholder="Paste the url of Profile Pic" />
