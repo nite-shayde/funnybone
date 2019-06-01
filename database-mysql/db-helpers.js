@@ -1,9 +1,17 @@
 const { Users } = require('./index');
 const { Messages } = require('./index');
-const dummyMessages = require('../client/src/dummy-message-data');
+const Sequelize = require('sequelize');
+// const dummyMessages = require('../client/src/dummy-message-data');
 
-const getUsers = () => {
- return Users.findAll()
+const Op = Sequelize.Op;
+
+const getUsers = (user) => {
+  return Users.findOne({ where: { id: user.id }}).then( () => {
+    return Users.findAll({ where: { id: { [Op.ne]: user.id }} })
+  }).then( results => {
+    return { user, allUsers: results}
+  })
+ 
   };
 
   // getUsers();

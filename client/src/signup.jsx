@@ -59,8 +59,8 @@ function Signup() {
                                 <input className="form-control" name="username" id="username" onChange={handleChange} />
                             </div>
                             <div className="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" className="form-control" name="name" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
+                                <label for="name">Display Name</label>
+                                <input type="text" className="form-control" name="name" id="name" onChange={handleChange} placeholder="Enter your Display Name" />
                             </div>
                             <div className="form-group">
                                 <label for="email">Email address</label>
