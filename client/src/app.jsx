@@ -42,12 +42,18 @@ function App() {
     setView('browse');
   }
 
+  // function logout(){
+  //   axios.get('/logout')
+  // }
 
   return (
     <div className="container">
       <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
-      <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">dis the nav bar</nav>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">
+        dis the nav bar
+        <a href="/logout"><button className="btn btn-secondary" >logout</button></a>
+      </nav>
 
       <div id="main-contents" className="row">
 

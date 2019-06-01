@@ -43,10 +43,10 @@ function Signup() {
         <div class="container">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="#signup" class="nav-link active" data-toggle="tab">Sign Up</a>
+                    <a href="#login" class="nav-link active" data-toggle="tab">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#login" class="nav-link" data-toggle="tab">Login</a>
+                    <a href="#signup" class="nav-link" data-toggle="tab">Sign Up</a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -68,7 +68,7 @@ function Signup() {
                             </div>
                             <div className="form-group">
                                 <label for="password">Password</label>
-                                <input className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
+                                <input className="form-control" type="password" name="password" id="password" onChange={handleChange} placeholder="Password" />
                                 <small id="password" className="form-text text-muted">I hope your password works for the email ;)</small>
                             </div>
                             {/* <div class="form-group">
@@ -85,7 +85,7 @@ function Signup() {
                         </fieldset>
                     </form>
                 </div>
-                <div class="tab-pane" id="login">
+                <div class="tab-pane active" id="login">
                     <h4 class="mt-2">Login</h4>
                     <form action="/login" method="post">
                         <fieldset>
