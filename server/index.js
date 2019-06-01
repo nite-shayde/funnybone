@@ -11,6 +11,7 @@ const cookieParse = require('cookie-parser');
 const session = require('express-session');
 
 
+
 const app = express();
 
 // MIDDLEWARE
@@ -67,7 +68,6 @@ app.use('/api/content', contentRoute);
 app.get('/login', (req, res) => {
   res.send("This is the login page");
 })
-
 
 app.post('/login', 
   passport.authenticate('local', { failureRedirect: '/login' }),
