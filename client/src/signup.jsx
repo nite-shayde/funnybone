@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json);
-app.use(bodyParser.urlencoded({ extended: true }));
-
 
 
 function Signup() {
@@ -44,38 +40,68 @@ function Signup() {
     // }
 
     return (
-        <div>
-            <form action="/api/user" method="post">
-                <fieldset>
-                    <legend class="text-center"><h1>Funny Bone Signup</h1></legend>
-                    <div className="form-group">
-                        <label for="username">Username</label>
-                        <input className="form-control" name="username" id="username" onChange={handleChange} />
-                    </div>
-                    {/* <div className="form-group">
-                        <label for="display">Display Name</label>
-                        <input type="text" className="form-control" name="displayName" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
-                    </div>
-                    <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" className="form-control" name="email" id="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email" />
-                    </div>
-                    <div className="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
-                        <small id="passwordHelp" className="form-text text-muted">I hope your password works for the email ;)</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="profileBio">Bio</label>
-                        <input class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
-                    </div>
-                    <div class="form-group">
-                        <label for="profilePicUpload">Upload A Profile Picture</label>
-                        <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" />
-                    </div> */}
-                    <button type="submit" name="Sign Up" className="btn btn-primary" >Sign Up</button>
-                </fieldset>
-            </form>
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#signup" class="nav-link active" data-toggle="tab">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#login" class="nav-link" data-toggle="tab">Login</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane" id="signup">
+                    <form action="/api/user" method="post">
+                        <fieldset>
+                            <legend class="text-center"><h1>Funny Bone Sign Up</h1></legend>
+                            <div className="form-group">
+                                <label for="username">Username</label>
+                                <input className="form-control" name="username" id="username" onChange={handleChange} />
+                            </div>
+                            <div className="form-group">
+                                <label for="display">Display Name</label>
+                                <input type="text" className="form-control" name="displayName" id="displayName" onChange={handleChange} placeholder="Enter your Display Name" />
+                            </div>
+                            <div className="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" className="form-control" name="email" id="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email" />
+                            </div>
+                            <div className="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
+                                <small id="passwordHelp" className="form-text text-muted">I hope your password works for the email ;)</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileBio">Bio</label>
+                                <input class="form-control" name="bio" id="bio" onChange={handleChange} rows="3" placeholder="Talk about your interest!" />
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePicUpload">Upload A Profile Picture</label>
+                                <input type="file" class="form-control-file" name="profilePic" id="profilePic" onChange={handleChange} aria-describedby="fileHelp" />
+                            </div>
+                            <button type="submit" name="Sign Up" className="btn btn-primary" >Sign Up</button>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="tab-pane" id="login">
+                    <h4 class="mt-2">Login</h4>
+                    <form action="/login" method="post">
+                        <fieldset>
+                            <legend class="text-center"><h1>Login to Funny Bone</h1></legend>
+                            <div className="form-group">
+                                <label for="username">Username</label>
+                                <input className="form-control" name="username" id="username" onChange={handleChange} />
+                            </div>
+                            <div className="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" className="form-control" name="password" id="password" onChange={handleChange} placeholder="Password" />
+                                <small id="passwordHelp" className="form-text text-muted">What Do You Call A Cow In A Earthquake... A Milkshake ;)</small>
+                            </div>
+                            <button type="submit" name="Login" className="btn btn-primary" >Login</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }
