@@ -1,5 +1,7 @@
 const { Users } = require('./index');
 const { Messages } = require('./index');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const dummyMessages = require('../client/src/dummy-message-data');
 
 const getUsers = () => {
@@ -19,21 +21,21 @@ const getUsers = () => {
 
  }
 // getConversation(9, 7);
-// db findAll :
 
-// WHERE
-// fromUserId === userAid AND toUserId === userBid
-// OR
-// fromUserId === userBid AND toUserId === userAid
+const generateHash = (password) => { 
+  let salt = bcrypt.genSaltSync(saltRounds);
+  return bcrypt.hashSync(password, salt);
+}
 
-// SORT BY:
-// createAt (most recent first)
+// const validatePassword = (password) => {
+//   return bcrypt.compareSync(password, generateHash(password));
+// }
+
 const saveUser = (user) => {
    return Users.create(user)
 }
 
-
-//saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", profilePicURL: "pizzahut.com"})
+//saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", password: generateHash("password123"), profilePicURL: "pizzahut.com"})
 const saveMessage = (message) => {
   return  Messages.create(message)
 }
@@ -47,6 +49,9 @@ module.exports.getUsers = getUsers;
 module.exports.getConversation = getConversation;
 module.exports.saveMessage = saveMessage;
 module.exports.saveUser = saveUser;
+module.exports.generateHash = generateHash;
+module.exports.validatePassword = validatePassword;
+
 
 
   
