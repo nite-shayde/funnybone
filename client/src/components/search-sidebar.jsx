@@ -30,7 +30,6 @@ function SearchSideBar(props) {
     function selectType(e) {
       setList([]);
       setContentType(e.target.name);
-      console.log(e.target.name);
     }
 
     return (
@@ -57,7 +56,7 @@ function ContentList(props) {
 
   const { list, contentType, changeSelectedContent } = props;
   let srcList = [];
-  console.log(list)
+  
   if (contentType === 'video') {
     srcList = list.map(vid => { return { vidId: vid.id.videoId, src: vid.snippet.thumbnails.medium.url } }  ) 
   } else if (contentType === 'gif') {

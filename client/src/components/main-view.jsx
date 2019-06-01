@@ -7,7 +7,7 @@ import Profile from './profile.jsx';
 
 export function MainView(props) {
 
-  const { view, changeView, user, mainViewUser, allUsers } = props;
+  const { view, changeView, user, mainViewUser, allUsers} = props;
 
   function getViewTarget(target) {
     changeView(target, mainViewUser)
@@ -30,7 +30,7 @@ export function MainView(props) {
 export function MainViewBody(props) {
 
     
-    const { view, changeView, user, mainViewUser, allUsers } = props.parentProps;
+    const { view, changeView, user, mainViewUser, allUsers, selectedContent } = props.parentProps;
 
     if (view === 'profile') {
       return (
@@ -39,7 +39,7 @@ export function MainViewBody(props) {
     }
     if (view === 'dm') {
       return (
-       <DM user={user} mainViewUser={mainViewUser} user={user} changeView={changeView}/>
+       <DM user={user} mainViewUser={mainViewUser} user={user} changeView={changeView} selectedContent={selectedContent}/>
       )
     }
     if (view === 'inbox') {

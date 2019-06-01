@@ -6,7 +6,7 @@ import { MainViewHeader } from './main-view.jsx';
 
 function DM(props) {
 
-  const { user, mainViewUser, changeView} = props;
+  const { user, mainViewUser, changeView, selectedContent} = props;
 
   function handleClick(e) {
       changeView(e.target.dataset.target, mainViewUser)
@@ -25,7 +25,7 @@ function DM(props) {
             <img className="img-xs" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
           </div>
           
-          <MessageComposer user={user} mainViewUser={mainViewUser}/>
+          <MessageComposer user={user} mainViewUser={mainViewUser} selectedContent={selectedContent} />
         </div>
   
   );
