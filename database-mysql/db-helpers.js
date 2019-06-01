@@ -26,6 +26,57 @@ const getUsers = (user) => {
       });
 
  }
+
+ const getInbox = (userId) => {
+
+  return Messages.findAll({ 
+    where: { 
+      [Op.or]: [{ toId: userId }, { fromId: userId} ]  
+      }, 
+      order: [['createdAt', "ASC"]] 
+    }).then( messages => {
+      return messages.reduce((userIds, m) => {
+        if (m.fromId != userId && !userIds.includes(m.fromId)) userIds.push(m.fromId);
+        if (m.toId != userId && !userIds.includes(m.toId)) userIds.push(m.toId);
+        return userIds;
+      }, []);
+    })
+
+
+
+
+
+  //  let userNames;
+  //  return Users.findAll({ where: {id: {[Op.ne]: userId}}})
+  //  .then( users => {
+  //    return users.reduce((userNames, user) => {
+  //     userNames[user.id] = user.username;
+  //     return userNames
+  //    }, {})
+  //  })
+  //  .then( results => {
+  //    userNames = results;
+  //    return Messages.findAll({ 
+  //      where: { 
+  //        [Op.or]: [{ toId: userId }, { fromId: userId} ]  
+  //        }, 
+  //        order: [['createdAt', "ASC"]] 
+  //      })
+  //  })
+  //  .then( messages => {
+  //     return messages.reduce((inbox, m) => {
+  //     //  let convo = m.toId < m.fromId ? `${m.toId}-${m.fromId}` : `${m.fromId}-${m.toId}`;
+  //     let convo = userId == m.fromId ? userNames[m.toId] : userNames[m.fromId];
+  //     if (!inbox[convo]) inbox[convo] = [];
+  //     inbox[convo].push(m);
+  //     return inbox;
+  //   }, {});
+  //   // return Object.values(inbox);
+  // });
+
+
+ }
+
 // getConversation(9, 7);
 // db findAll :
 
@@ -41,7 +92,6 @@ const saveUser = (user) => {
 }
 
 
-//saveUser({name: "Chris", username: "chrisCorley", email: "chrisCorly@gmail.com", profilePicURL: "pizzahut.com"})
 const saveMessage = (message) => {
   return  Messages.create(message)
 }
@@ -55,6 +105,8 @@ module.exports.getUsers = getUsers;
 module.exports.getConversation = getConversation;
 module.exports.saveMessage = saveMessage;
 module.exports.saveUser = saveUser;
+module.exports.getInbox = getInbox;
+
 
 
   
