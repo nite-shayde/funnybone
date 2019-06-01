@@ -9,6 +9,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParse = require('cookie-parser');
 const session = require('express-session');
+const morgan = require('morgan')
 
 
 
@@ -22,6 +23,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(morgan());
 
 // AUTH MIDDLEWARE
 app.use(passport.initialize());
@@ -56,7 +58,17 @@ passport.deserializeUser(function(id, done) {
 
 // const authenticate = ;
 // add static assests
-app.use(express.static(path.join(__dirname, '../client/dist')))
+app.use(express.static(path.join(__dirname, '../client/dist')), (req, res, next) => {
+  if (req.isAuthenticated()) {
+    // res.send('here ur home page authenticato');
+    next();
+  } else {
+    next();
+    // res.redirect('/login');
+  }
+})
+
+
 
 
 // ROUTES
