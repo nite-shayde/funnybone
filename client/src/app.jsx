@@ -18,9 +18,12 @@ function App() {
 
   useEffect(() => {
     axios.get('/api/user').then((response) => {
-      if (response.data.allUsers.length) {
-        setAllUsers(response.data.allUsers)
-        setUser(response.data.user);
+      const { user, allUsers } = response.data;
+      if (allUsers.length) {
+
+        console.log(user, allUsers)
+        setAllUsers(allUsers)
+        setUser(user);
       }
     })
   }, [allUsers.length])
@@ -50,7 +53,7 @@ function App() {
     <div className="container">
       <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
-      <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">exit
         <a href="/logout"><button className="btn btn-secondary" >logout</button></a>
       </nav>
 
