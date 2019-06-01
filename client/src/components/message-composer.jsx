@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function MessageComposer(props) {
     
-    const { user, mainViewUser } = props;
+    const { user, mainViewUser, selectedContent } = props;
     const [ conversation, setConversation ] = useState([]);
     const [ inputText, setInputText ] = useState(null);
     const placeholder = 'you\'re not funny...\r\nbut you should still try';
@@ -36,10 +36,23 @@ function MessageComposer(props) {
           console.error(err);
         })
       }
+      if (selectedContent.src) {
+        const message = {
+          contentType: 'gif',
+          content: selectedContent.src,
+          fromId: user.id,
+          toId: mainViewUser.id
+        }
+        axios.post('/api/message', message).then( response => {
+          fetchConvo();
+        }).catch(err => {
+          console.error(err);
+        })
+      }
+
     }
 
     return (
-        // <div class="row justify-content-center">
         <div className="card text-white bg-primary mb-3">
           <div className="card-body"> 
     
@@ -47,13 +60,20 @@ function MessageComposer(props) {
               { startConversation }
               {conversation.map( message => <Message key={message.content} message={message} parentProps={props}/>)}
             </div>
-
-            <form>
-                <label>
-                    <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setInputText(e.target.value)} />
-                </label>            
-                <button id="text" type="button" className="btn btn-secondary" onClick={ sendMessage }>send</button>       
-            </form>
+            <div className="row">
+              <form className="col-md-8">
+                  <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setInputText(e.target.value)} />      
+                  <button id="text" type="button" className="btn btn-secondary flex-shrink-1" onClick={ sendMessage }>send</button>       
+              </form>
+              <div className="col-md-3 p-0 overflow-hidden">
+                {!selectedContent.src ? <h4>add a GIF or vid</h4> : null}
+                {
+                  selectedContent.vidId ?  'youtube' 
+                  : <img src={selectedContent.src} className="img-sm"/>
+                }
+                {/* <iframe className="container-fluid" src="hello" frameBorder="0" scrolling="no" allowFullScreen></iframe> */}
+              </div>
+            </div>
           </div>
         </div>
     );
@@ -77,17 +97,33 @@ function Message(props) {
     return (<span />);
   }
 
+  // RENDER TEXT MESSAGE
+  if (message.contentType === 'text') {
+    return (
+        <div className={messageClass}>
+          <div>
+            <img className="img-xxs" src={tinyThumb} />
+          </div>
+          <div className={contentClass}>
+            {message.content}
+          </div>
+        </div>
+    );
+  }
 
+  // RENDER GIF MESSAGE
   return (
-      <div className={messageClass}>
-        <div>
-          <img className="img-xxs" src={tinyThumb} />
-        </div>
-        <div className={contentClass}>
-          {message.content}
-        </div>
+    <div className={messageClass}>
+      <div>
+        <img className="img-xxs" src={tinyThumb} />
       </div>
-  );
+      <div className={contentClass}>
+        <img className="img-sm" src={message.content} />
+      </div>
+    </div>
+);
+
+
 }
 
 
