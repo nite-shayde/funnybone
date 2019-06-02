@@ -41,8 +41,8 @@ function MessageComposer(props) {
       }
       if (selectedContent.src) {
         const message = {
-          contentType: 'gif',
-          content: selectedContent.src,
+          contentType: selectedContent.vidId ? 'video' : 'gif',
+          content: selectedContent.vidId ? `http://www.youtube.com/embed/${selectedContent.vidId}` : selectedContent.src,
           fromId: user.id,
           toId: mainViewUser.id
         }
@@ -86,8 +86,8 @@ function MessageComposer(props) {
               <div className="col-md-3 p-0 overflow-hidden">
                 {!selectedContent.src ? <h4>add a GIF or vid</h4> : null}
                 {
-                  selectedContent.vidId ?  'youtube' 
-                  : <img src={selectedContent.src} className="img-sm"/>
+                  // selectedContent.vidId ?  'youtube' : 
+                  <img src={selectedContent.src} className="img-sm"/>
                 }
                 {/* <iframe className="container-fluid" src="hello" frameBorder="0" scrolling="no" allowFullScreen></iframe> */}
               </div>
@@ -130,16 +130,33 @@ function Message(props) {
   }
 
   // RENDER GIF MESSAGE
+  else if (message.contentType === 'gif') {
+    return (
+      <div className={messageClass}>
+        <div>
+          <img className="img-xxs" src={tinyThumb} />
+        </div>
+        <div className={contentClass}>
+          <img className="img-sm rounded" src={message.content} />
+        </div>
+      </div>
+  
+    );
+  }
+
+  // YOUTUBE VID
   return (
     <div className={messageClass}>
       <div>
         <img className="img-xxs" src={tinyThumb} />
       </div>
       <div className={contentClass}>
-        <img className="img-sm rounded" src={message.content} />
+        <iframe src={message.content} width="auto" height="auto" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-);
+
+  );
+
 
 
 }
