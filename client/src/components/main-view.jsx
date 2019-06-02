@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UserThumbPreview from './user-thumb-preview.jsx';
 import DM from './dm.jsx';
-import dummyUserData from '../dummy-user-data';
+import dummyUserData from '../data/dummy-user-data';
 import Profile from './profile.jsx';
 import Inbox from './inbox.jsx';
 import MessageComposer from './message-composer.jsx';
