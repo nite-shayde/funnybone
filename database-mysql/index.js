@@ -40,13 +40,13 @@ const Messages = connection.define('messages', {
   toId: Sequelize.INTEGER
 })
 
-connection.sync({ force: true })
+connection.sync({ force: false })
   .then((result) => {
-    console.log(result, 'are we in the data??????');
-    Users.bulkCreate(dummyUserData)
-    .then(user => {
-      console.log(user.dataValues);
-    })
+    console.log(result, 'connected to', database);
+    // Users.bulkCreate(dummyUserData)
+    // .then(user => {
+    //   console.log(user.dataValues);
+    // })
   })
   .catch((err) => {
     console.log(err, '!!!!!!!!!!!!!');
