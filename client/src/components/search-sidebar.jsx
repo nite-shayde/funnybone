@@ -26,7 +26,8 @@ function SearchSideBar(props) {
       }
     }
 
-    function clickSearch() {
+    function clickSearch(e) {
+       e.preventDefault();
        doSearch();
     }
 
@@ -35,16 +36,21 @@ function SearchSideBar(props) {
       setContentType(e.target.name);
     }
 
+    function handleChange(e){
+      console.dir(e)
+      setQuery(e.target.value)
+    }
+
     return (
   
         <div className="d-flex flex-column justify-content-center">
-          <div className="btn-group mb-2" role="group">
-            <button name="gif" type="button" className="btn btn-primary" onClick={selectType}>GIF/Meme</button>
-            <button name="video" type="button" className="btn btn-primary" onClick={selectType}>Video</button>
-          </div>
-          <div className="d-flex flex-row">
-            <input className="flex-grow-1" type="text" onChange={(e) => setQuery(e.target.value)}/>
-            <button onClick={clickSearch} className="btn btn-sm"><img src="./img/search-icon.png" className="img-xxs ml-2" /></button>
+          <form className="d-flex flex-row mb-2">
+            <input className="flex-grow-1" type="text" onChange={handleChange}/>
+            <button type="submit" onClick={clickSearch} className="btn btn-sm"><img src="./img/search-icon.png" className="img-xxs ml-2" /></button>
+          </form>
+          <div className="btn-group mb-2 d-flex flex-row" role="group">
+            <button name="gif" type="button" className="btn btn-primary btn-sm" onClick={selectType}>Giphy</button>
+            <button name="video" type="button" className="btn btn-primary btn-sm" onClick={selectType}>Video</button>
           </div>
           <div className="overflow-auto" id="search-content">
             <ContentList listGIF={listGIF} listVID={listVID} contentType={contentType} changeSelectedContent={changeSelectedContent}/>
@@ -104,7 +110,7 @@ function GiphyItem(props) {
     changeSelectedContent(gifSource)
   }
   return (
-    <div onClick={handleClick}><img className="img-md mb-2" src={gifSource} /></div>
+    <div onClick={handleClick}><img className="img-md mb-2 search-content" src={gifSource} /></div>
   );
 }
 
@@ -118,7 +124,7 @@ function YoutubeItem(props) {
     const { videoId } = vid.id;
     return (
       <div className="mb-2">
-        <iframe src={`http://www.youtube.com/embed/${videoId}`} width="auto" height="auto" frameborder="0" allowfullscreen></iframe>
+        <iframe className="search-content" src={`http://www.youtube.com/embed/${videoId}`} width="auto" height="auto" frameborder="0" allowfullscreen></iframe>
         <span class="badge badge-info" onClick={handleClick}>select</span>
       </div>
 
