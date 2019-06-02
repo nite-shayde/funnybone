@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function MessageComposer(props) {
     
-    const { user, mainViewUser, selectedContent, setSelectedContent } = props;
+    const { user, mainViewUser, selectedContent, setSelectedContent, changeView } = props;
     const [ conversation, setConversation ] = useState([]);
     const [ inputText, setInputText ] = useState(null);
     const placeholder = 'you\'re not funny...\r\nbut you should still try';
