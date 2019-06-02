@@ -4,14 +4,17 @@ import axios from 'axios';
 
 function MessageComposer(props) {
     
-    const { user, mainViewUser, selectedContent } = props;
+    const { user, mainViewUser, selectedContent, setSelectedContent } = props;
     const [ conversation, setConversation ] = useState([]);
     const [ inputText, setInputText ] = useState(null);
     const placeholder = 'you\'re not funny...\r\nbut you should still try';
     const startConversation = !conversation.length ? 'say something stupid...' : null;
+    const lastMessageRef = React.createRef();
+
 
     useEffect(()=>{
       fetchConvo();
+      lastMessageRef.current.scrollIntoView({ behavior: 'smooth', block: 'end'});
     }, [conversation.length])
 
     function fetchConvo() {
@@ -22,7 +25,7 @@ function MessageComposer(props) {
       });
     }
 
-    function sendMessage(){
+    function sendMessage(e){
       if (inputText) {
         const message = {
           contentType: 'text',
@@ -49,21 +52,36 @@ function MessageComposer(props) {
           console.error(err);
         })
       }
+      setInputText('');
+      setSelectedContent({})
+    }
 
+    function handleClick(e) {
+      changeView(e.target.dataset.target, mainViewUser)
     }
 
     return (
         <div className="card text-white bg-primary mb-3">
           <div className="card-body"> 
+        
+            <div className="d-flex flex-row align-items-center mb-2">
+              <img className="img-xs rounded mr-3" data-target="profile" onClick={handleClick} src={mainViewUser.profilePicURL}/>
+              <div>
+                <h4 data-target="profile" onClick={handleClick}> {mainViewUser.username}</h4>
+              </div>
+            </div>
+         
+
     
             <div id="conversation" className="p-3 mb-2 overflow-auto">
-              { startConversation }
+              {/* { startConversation } */}
               {conversation.map( message => <Message key={message.content} message={message} parentProps={props}/>)}
+              <div ref={lastMessageRef}></div>
             </div>
             <div className="row">
               <form className="col-md-8">
-                  <textarea className="form-control form-control-lg" type="text" placeholder={placeholder} onChange={(e) => setInputText(e.target.value)} />      
-                  <button id="text" type="button" className="btn btn-secondary flex-shrink-1" onClick={ sendMessage }>send</button>       
+                  <textarea className="form-control mb-2" type="text" placeholder={placeholder} value={inputText} onChange={(e) => setInputText(e.target.value)} />      
+                  <button id="text" type="button" className="btn btn-warning flex-shrink-1" onClick={ sendMessage }>send</button>       
               </form>
               <div className="col-md-3 p-0 overflow-hidden">
                 {!selectedContent.src ? <h4>add a GIF or vid</h4> : null}
@@ -102,7 +120,7 @@ function Message(props) {
     return (
         <div className={messageClass}>
           <div>
-            <img className="img-xxs" src={tinyThumb} />
+            <img className="img-xxs rounded" src={tinyThumb} />
           </div>
           <div className={contentClass}>
             {message.content}
@@ -118,7 +136,7 @@ function Message(props) {
         <img className="img-xxs" src={tinyThumb} />
       </div>
       <div className={contentClass}>
-        <img className="img-sm" src={message.content} />
+        <img className="img-sm rounded" src={message.content} />
       </div>
     </div>
 );

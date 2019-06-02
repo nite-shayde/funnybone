@@ -64,7 +64,7 @@ function App() {
         </div>
 
         <div id="main-view" className="col-md-6">  
-          <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} selectedContent={selectedContent}/>
+          <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} selectedContent={selectedContent} setSelectedContent={setSelectedContent}/>
         </div>
 
         <div id="right-side-bar" className="col-md-3">

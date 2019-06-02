@@ -4,7 +4,7 @@ import { MainViewHeader } from './main-view.jsx';
 // props is the user data
 function Profile(props) {
     const { mainViewUser, changeView } = props;
-    const { username, name, profilePicURL, interests } = mainViewUser;
+    const { username, name, profilePicURL, interests, bio } = mainViewUser;
 
     function handleClick(e) {
         changeView(e.target.dataset.target, mainViewUser)
@@ -17,14 +17,13 @@ function Profile(props) {
     return (
        
            
-        //    <MainViewHeader getViewTarget={getViewTarget}/>
-           
             <div className="">
                 <div className="">
                     <img className="img-thumbnail img-lg" src={profilePicURL} />
-                    <h4>@{username}</h4>
+
                     <h3>{name}</h3>
-                    <button data-target="dm" type="button" className="btn btn-sm btn-success" onClick={handleClick}>slide into {username}'s DM </button>
+                    <button data-target="dm" type="button" className="btn btn-success" onClick={handleClick}>slide into {username}'s DM </button>
+                    <div className="mt-2">{bio}</div>
                     {/* <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul> */}
                 </div>
             </div>

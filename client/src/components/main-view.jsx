@@ -4,6 +4,8 @@ import DM from './dm.jsx';
 import dummyUserData from '../dummy-user-data';
 import Profile from './profile.jsx';
 import Inbox from './inbox.jsx';
+import MessageComposer from './message-composer.jsx';
+
 
 
 export function MainView(props) {
@@ -31,7 +33,7 @@ export function MainView(props) {
 export function MainViewBody(props) {
 
     
-    const { view, changeView, user, mainViewUser, allUsers, selectedContent } = props.parentProps;
+    const { view, changeView, user, mainViewUser, allUsers, selectedContent, setSelectedContent } = props.parentProps;
 
     if (view === 'profile') {
       return (
@@ -40,7 +42,8 @@ export function MainViewBody(props) {
     }
     if (view === 'dm') {
       return (
-       <DM user={user} mainViewUser={mainViewUser} user={user} changeView={changeView} selectedContent={selectedContent}/>
+        <MessageComposer user={user} mainViewUser={mainViewUser} changeView={changeView} selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
+      //  <DM user={user} mainViewUser={mainViewUser} changeView={changeView} selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
       )
     }
     if (view === 'inbox') {
@@ -72,9 +75,9 @@ export function MainViewHeader(props) {
   return ( 
       <div className="card-header d-flex flex-row justify-content-around">
           {/* <button id="text" type="button" className="btn btn-secondary">Text</button> */}
-           <button className="btn btn-primary" data-target="browse" onClick={handleClick}>browse</button>
-           <h3>{view}</h3>
-          <button className="btn btn-primary" data-target="inbox" onClick={handleClick}>inbox</button>
+           <button className="btn btn-sm btn-primary" data-target="browse" onClick={handleClick}>browse</button>
+           <h4>{view}</h4>
+          <button className="btn btn-sm btn-primary" data-target="inbox" onClick={handleClick}>inbox</button>
       </div>   
   )
 
