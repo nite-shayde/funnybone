@@ -54,12 +54,12 @@ function App() {
       <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
       <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">
-        <a href="/logout"><button className="btn btn-secondary" >logout</button></a>
+        <a href="/logout"><span className="badge badge-secondary" >logout</span></a>
       </nav>
 
       <div id="main-contents" className="row">
 
-        <div id="left-side-bar" className="col-md-3">
+        <div id="left-side-bar" className="col-md-2">
           <UserSidebarInfo user={user} />
         </div>
 
@@ -67,7 +67,7 @@ function App() {
           <MainView view={view} changeView={changeView} user={user} mainViewUser={mainViewUser} allUsers={allUsers} selectedContent={selectedContent} setSelectedContent={setSelectedContent}/>
         </div>
 
-        <div id="right-side-bar" className="col-md-3">
+        <div id="right-side-bar" className="col-md-4">
           <SearchSideBar changeSelectedContent={changeSelectedContent}/>
         </div>
 
