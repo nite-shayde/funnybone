@@ -22,13 +22,16 @@ router.post("/", function(req, res) {
   const user = req.body;
   helpers
     .saveUser(user)
-    .then(results => {
-      console.log(results);
-      res.redirect("/");
+    .then(savedUser => {
+      console.log(savedUser);
+      req.login(savedUser, (err) => {
+        if (err) res.sendStatus(404)
+        else res.redirect("/");
+      })
     })
     .catch(error => {
       console.log(error);
-      res.sendStatus(404);
+      res.redirect('/login')
     });
 });
 

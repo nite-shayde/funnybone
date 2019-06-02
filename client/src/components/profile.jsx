@@ -22,7 +22,7 @@ function Profile(props) {
                     <img className="img-thumbnail img-lg" src={profilePicURL} />
 
                     <h3>{name}</h3>
-                    <button data-target="dm" type="button" className="btn btn-success" onClick={handleClick}>slide into {username}'s DM </button>
+                    <button data-target="dm" type="button" className="btn btn-success" onClick={handleClick}>slide into {name}'s DM </button>
                     <div className="mt-2">{bio}</div>
                     {/* <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul> */}
                 </div>
