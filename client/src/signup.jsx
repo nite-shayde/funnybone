@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import Header from './components/header.jsx';
 
 
 function Signup() {
@@ -32,6 +33,9 @@ function Signup() {
 
   return (
     <div className="container">
+      <Header />
+
+
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <a href="#login" className="nav-link active" data-toggle="tab">Login</a>
@@ -44,7 +48,7 @@ function Signup() {
         <div className="tab-pane" id="signup">
           <form action="/api/user" method="post">
             <fieldset>
-              <legend className="text-center"><h1>Funny Bone Sign Up</h1></legend>
+              <legend className="text-center"><h2>Funny Bone Sign Up</h2></legend>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input className="form-control" name="username" id="username" onChange={handleChange} />
@@ -77,10 +81,9 @@ function Signup() {
           </form>
         </div>
         <div className="tab-pane active" id="login">
-          <h4 className="mt-2">Login</h4>
           <form action="/login" method="post">
             <fieldset>
-              <legend className="text-center"><h1>Login to Funny Bone</h1></legend>
+              <legend className="text-center"><h2>Login to Funny Bone</h2></legend>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input className="form-control" name="username" id="username" onChange={handleChange} />
