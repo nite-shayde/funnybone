@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-session": "^1.16.1",
@@ -23,6 +24,12 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
     "nodemon": "^1.19.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
