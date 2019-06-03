@@ -83,11 +83,8 @@ function MessageComposer(props) {
           </form>
           <div className="col-md-3 p-0 overflow-hidden">
             {!selectedContent.src ? <h4>add a GIF or vid</h4> : null}
-            {
-              // selectedContent.vidId ?  'youtube' :
-              <img src={selectedContent.src} className="img-sm" alt="gif" />
-            }
-            {/* <iframe className="container-fluid" src="hello" frameBorder="0" scrolling="no" allowFullScreen></iframe> */}
+            {<img src={selectedContent.src} className="img-sm" />}
+
           </div>
         </div>
       </div>
