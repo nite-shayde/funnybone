@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import dummyMessageData from '../dummy-message-data';
+import dummyMessageData from '../data/dummy-message-data';
 import axios from 'axios';
 
 function MessageComposer(props) {

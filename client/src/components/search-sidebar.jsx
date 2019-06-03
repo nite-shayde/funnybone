@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { cpus } from 'os';
+import randomSearchQueries from '../data/random-search-data';
 
 function SearchSideBar(props) {
+    let rIndx = Math.floor(Math.random() * randomSearchQueries.length);
+
     const { changeSelectedContent } = props;
-    const [ query, setQuery] = useState(null);
+    const [ query, setQuery] = useState(randomSearchQueries[rIndx]);
     const [ listGIF, setListGIF ] = useState([]);
     const [ listVID, setListVID ] = useState([]);
     const [ contentType, setContentType ] = useState('gif');
 
-    // useEffect(()=>{
-    //   if(query) doSearch();
-    // }, contentType)
+    // Inital load, random query
+    useEffect(() => {
+      doSearch();
+    }, []);
 
     function doSearch() {
       if (query) {

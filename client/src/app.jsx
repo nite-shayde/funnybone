@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import dummyUserData from './dummy-user-data';
+import dummyUserData from './data/dummy-user-data';
 import UserSidebarInfo from './components/user-sidebar-info.jsx'
 import SearchSideBar from './components/search-sidebar.jsx';
 import { MainView } from './components/main-view.jsx';

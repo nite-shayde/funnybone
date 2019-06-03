@@ -1,6 +1,6 @@
 // this is where the database connection will happen 
 const Sequelize = require('sequelize');
-const dummyUserData = require('../client/src/dummy-user-data');
+const dummyUserData = require('../client/src/data/dummy-user-data');
 
 const host = process.env.DB_HOST ||'localhost';
 const user = process.env.DB_USER || 'root';
