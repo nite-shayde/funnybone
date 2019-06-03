@@ -38,16 +38,14 @@ function App() {
   }
 
   // JUST FOR TESTING
-  function setUserByUsername(username) {
-    allUsers.forEach(u => {
-      if (u.username == username) setUser(u);
-    })
-    setView('browse');
-  }
-
-  // function logout(){
-  //   axios.get('/logout')
+  // function setUserByUsername(username) {
+  //   allUsers.forEach(u => {
+  //     if (u.username == username) setUser(u);
+  //   })
+  //   setView('browse');
   // }
+
+
 
   return (
     <div className="container">
@@ -73,11 +71,11 @@ function App() {
 
       </div>
 
-      <div>
+      {/* <div>
         <select onChange={(e) => { setUserByUsername(e.target.value) }}>
           {allUsers.map(u => <option key={u.id} value={u.username}>{u.name}</option>)}
         </select>
-      </div>
+      </div> */}
 
 
       <footer className="container"> <i>powered by</i>&nbsp; Yo Mama &trade;</footer>
