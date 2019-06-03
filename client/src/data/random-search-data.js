@@ -10,5 +10,5 @@ module.exports = [
   'hormone monstress',
   'bobs burgers',
   'space balls',
-  'waynes world'
+  'waynes world',
 ];
