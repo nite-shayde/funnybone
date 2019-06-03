@@ -16,7 +16,8 @@ function SearchSideBar(props) {
     if (query) {
       const contentTypeOnSearch = contentType;
       axios.post('api/content', { query, contentType }).then((response) => {
-        setContentType(contentTypeOnSearch); // this ensures that content for the data coming is reset to what it was in case use changes before response
+        // this ensures that content for the data coming is reset to what it was in case use changes before response
+        setContentType(contentTypeOnSearch);
         if (contentType === 'gif') setListGIF(response.data);
         else if (contentType === 'video') setListVID(response.data);
       }).catch(() => {

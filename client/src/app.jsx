@@ -3,6 +3,7 @@ import axios from 'axios';
 import UserSidebarInfo from './components/user-sidebar-info.jsx';
 import SearchSideBar from './components/search-sidebar.jsx';
 import { MainView } from './components/main-view.jsx';
+import Header from './components/header.jsx';
 
 
 function App() {
@@ -33,11 +34,13 @@ function App() {
 
   return (
     <div className="container">
-      <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
+      {/* <div className="d-flex justify-content-end"><h1 className="text-warning">FUNNY BONE</h1></div>
 
       <nav className="navbar navbar-expand-lg navbar-dark bg-warning mb-4">
         <a href="/logout"><span className="badge badge-secondary">logout</span></a>
-      </nav>
+      </nav> */}
+
+      <Header />
 
       <div id="main-contents" className="row">
 

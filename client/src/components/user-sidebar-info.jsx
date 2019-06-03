@@ -14,19 +14,22 @@ function UserSidebarInfo(props) {
   }, []);
 
   return (
-    <div className="">
+    <div className="d-flex flex-column  align-items-end">
       <div className="">
         <img id="user-profile-pic" className="img-thumbnail img-md" src={profilePicURL} />
         <h3>{name}</h3>
         <div className="my-2">{bio}</div>
-        <div className="text-success">
-          <h4 className="">joke of the day</h4>
-          <div>
-            {jokeOfTheDay}
-          </div>
-        </div>
-        {/* <ul className="list-group">{interests.map(interest => <button key={interest} type="button" className="list-group-item list-group-item-action">{interest}</button>)}</ul> */}
       </div>
+      <div className="text-success">
+        <h4 className="">joke of the day</h4>
+        <div>
+          {jokeOfTheDay}
+        </div>
+      </div>
+      <div className="mt-auto">
+        <a href="/logout"><span className="badge badge-secondary">logout</span></a>
+      </div>
+
     </div>
   );
 }
