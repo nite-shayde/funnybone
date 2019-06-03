@@ -4,5 +4,11 @@ module.exports = [
   'flying',
   'laughing',
   'pickle rick',
-  'kid falling down'
+  'kid falling down',
+  'smile',
+  'wassup',
+  'hormone monstress',
+  'bobs burgers',
+  'space balls',
+  'waynes world'
 ];
