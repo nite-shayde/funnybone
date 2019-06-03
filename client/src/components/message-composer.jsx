@@ -137,7 +137,7 @@ function Message(props) {
           <img className="img-xxs" src={tinyThumb} />
         </div>
         <div className={contentClass}>
-          <img className="img-sm rounded" src={message.content} />
+          <img className="img-md rounded" src={message.content} />
         </div>
       </div>
   
