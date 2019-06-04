@@ -17,6 +17,12 @@ const getConversation = (userAid, userBid) => Messages.findAll({
   order: [['createdAt', 'ASC']],
 });
 
+/**
+ * This function gets the inbox for a particular user. Its finds
+ * all the messages where the toId and fromId contain the userID.
+ * After that, they are pushed into an userIds array whether, the
+ * messages toId and fromId doesn't equal the userId
+ */
 const getInbox = userId => Messages.findAll({
   where: {
     [Op.or]: [{ toId: userId }, { fromId: userId }],
