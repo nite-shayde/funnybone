@@ -28,8 +28,8 @@ router.post('/', (req, res) => {
   // res.send('POST handler for /api/message route.');
   const message = req.body;
   db.saveMessage(message)
-    .then((message) => {
-      res.send(message);
+    .then((msg) => {
+      res.send(msg);
     }).catch((error) => {
       res.send(error);
     });
