@@ -1,24 +1,27 @@
 const express = require('express');
-const { giphySearch } = require('../../api/giphy-api')
-const { youtubeSearch } = require('../../api/youtube-api')
+const { giphySearch } = require('../../api/giphy-api');
+const { youtubeSearch } = require('../../api/youtube-api');
 
-const search = { gif: giphySearch, video: youtubeSearch}
+const search = { gif: giphySearch, video: youtubeSearch };
 
 const router = express.Router();
 
-router.get('/', function(req, res) {
-    res.send('GET handler for /api/content route.');
+router.get('/', (req, res) => {
+  res.send('GET handler for /api/content route.');
 });
 
-router.post('/', function(req, res) {
-    const { contentType, query } = req.body;
-    search[contentType](query).then( response => {
-        if (response.data) res.send(response.data);
-        else res.send(response)
-    }).catch (err => {
-        console.log(err)
-        res.send(404)
-    })
+/**
+ * This route posts the typed in search query to the main page
+ */
+router.post('/', (req, res) => {
+  const { contentType, query } = req.body;
+  search[contentType](query).then((response) => {
+    if (response.data) res.send(response.data);
+    else res.send(response);
+  }).catch((err) => {
+    console.log(err);
+    res.send(404);
+  });
 });
 
 module.exports = router;
