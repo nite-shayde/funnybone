@@ -1,4 +1,5 @@
 // this is where the database connection will happen
+require('dotenv').config();
 const Sequelize = require('sequelize');
 const dummyUserData = require('../client/src/data/dummy-user-data');
 
@@ -40,7 +41,7 @@ const Messages = connection.define('messages', {
   toId: Sequelize.INTEGER,
 });
 
-connection.sync({ force: false })
+connection.sync({ force: true })
   .then((result) => {
     console.log(result, 'connected to', database);
     // Users.bulkCreate(dummyUserData)

@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const youtubeKey = process.env.YOUTUBE_API_KEY || require('./.config.js').youtubeKey;
+const youtubeKey = process.env.YOUTUBE_API_KEY || require('./config').youtubeApiKey;
 
 // returns 5 youtube videos on whatever user searched
 function youtubeSearch(query) {

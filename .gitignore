@@ -2,7 +2,7 @@
 client/dist/*.js
 
 #api keys
-api/.config.js
+api/config.js
 
 .vscode/
 
