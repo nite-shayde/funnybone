@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
   res.send('GET handler for /api/content route.');
 });
 
+/**
+ * This route posts the typed in search query to the main page
+ */
 router.post('/', (req, res) => {
   const { contentType, query } = req.body;
   search[contentType](query).then((response) => {

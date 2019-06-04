@@ -33,6 +33,10 @@ app.get('/', (req, res, next) => {
   }
 });
 
+/**
+ * This function checks to make sure user is aunthenticated
+ * and isn't redirected to a login/signup page every refresh
+ */
 const verifySession = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.redirect('/');

@@ -3,6 +3,9 @@ const db = require('../../database-mysql/db-helpers');
 
 const router = express.Router();
 
+/**
+ * This route gets the main user and accompanied users
+ */
 router.get('/:userAid,:userBid', (req, res) => {
   // res.send('GET handler for /api/message route.');
   const { userAid, userBid } = req.params;
@@ -14,6 +17,9 @@ router.get('/:userAid,:userBid', (req, res) => {
   });
 });
 
+/**
+ * This route gets an user and gets their inbox messages
+ */
 router.get('/:userId', (req, res) => {
   const { userId } = req.params;
   db.getInbox(userId).then((results) => {
