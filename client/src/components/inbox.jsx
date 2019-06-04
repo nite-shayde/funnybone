@@ -1,17 +1,22 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
-
+// Convo component below
 function Inbox(props) {
   const {
-    user, allUsers, mainViewUser, changeView,
+    user, allUsers, changeView,
   } = props;
 
   const [convoIds, setConvoIds] = useState([]);
 
-  const usersById = allUsers.filter(user => convoIds.includes(user.id))
-    .reduce((userNames, user) => {
-      userNames[user.id] = user;
+  const usersById = allUsers.filter(u => convoIds.includes(u.id))
+    .reduce((userNames, u) => {
+      userNames[u.id] = u;
       return userNames;
     }, {});
 
@@ -23,16 +28,14 @@ function Inbox(props) {
   useEffect(() => {
     axios.get(`api/message/${user.id}`).then((response) => {
       setConvoIds(response.data);
-    }).catch((err) => {
-
-    });
+    }).catch(() => {});
   }, [convoIds.length]);
 
   return (
     <div className="">
 
-      {allUsers.filter(user => convoIds.includes(user.id))
-        .map(user => <Convo handleClick={handleClick} user={user} key={user.username} />)}
+      {allUsers.filter(u => convoIds.includes(u.id))
+        .map(u => <Convo handleClick={handleClick} user={u} key={u.username} />)}
 
     </div>
 
@@ -50,5 +53,28 @@ function Convo(props) {
   );
 }
 
+Inbox.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    username: PropTypes.string,
+    bio: PropTypes.string,
+    id: PropTypes.number,
+    profilePicURL: PropTypes.string,
+  }).isRequired,
+  allUsers: PropTypes.shape([]).isRequired,
+  changeView: PropTypes.func.isRequired,
+};
+
+
+Convo.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    username: PropTypes.string,
+    bio: PropTypes.string,
+    id: PropTypes.number,
+    profilePicURL: PropTypes.string,
+  }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Inbox;

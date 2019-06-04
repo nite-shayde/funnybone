@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+/**
+ * Message Composer is the DM view, it renders the message history
+ * and the box at the bottom to send messages
+ */
+
 function MessageComposer(props) {
   const {
     user, mainViewUser, selectedContent, setSelectedContent, changeView,
@@ -24,6 +29,7 @@ function MessageComposer(props) {
   }
 
   function sendMessage(e) {
+    // Send a text if text
     if (inputText) {
       const message = {
         contentType: 'text',
@@ -37,6 +43,7 @@ function MessageComposer(props) {
         // console.error(err);
       });
     }
+    // Send a VID/GIF if there is one
     if (selectedContent.src) {
       const message = {
         contentType: selectedContent.vidId ? 'video' : 'gif',
@@ -92,6 +99,7 @@ function MessageComposer(props) {
   );
 }
 
+// Render and individual message
 function Message(props) {
   const { message, parentProps } = props;
   const { user, mainViewUser } = parentProps;
