@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import randomSearchQueries from '../data/random-search-data';
 
+// See components below for render the serach results
 function SearchSideBar(props) {
   const rIndx = Math.floor(Math.random() * randomSearchQueries.length);
 
@@ -26,16 +27,19 @@ function SearchSideBar(props) {
     }
   }
 
+  // do search on click
   function clickSearch(e) {
     e.preventDefault();
     doSearch();
   }
 
+  // switch between Giphy and Video
   function selectType(e) {
     // setListGIF([]);
     setContentType(e.target.name);
   }
 
+  // capture query input form user
   function handleChange(e) {
     console.dir(e);
     setQuery(e.target.value);
@@ -65,7 +69,7 @@ function SearchSideBar(props) {
   );
 }
 
-
+// Render Search results
 function ContentList(props) {
   const {
     listGIF, listVID, contentType, changeSelectedContent,
@@ -85,7 +89,7 @@ function ContentList(props) {
   );
 }
 
-
+//Giphy item 
 function GiphyItem(props) {
   const { gif, changeSelectedContent } = props;
   const gifSource = gif.images.downsized_medium.url.replace(/media[0-9]/, 'i');
@@ -99,6 +103,7 @@ function GiphyItem(props) {
   );
 }
 
+//youtube item
 function YoutubeItem(props) {
   const { vid, changeSelectedContent } = props;
   const vidThumbSource = vid.snippet.thumbnails.medium.url;

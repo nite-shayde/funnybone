@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+/* eslint-disable import/extensions */
+import React from 'react';
 import UserThumbPreview from './user-thumb-preview.jsx';
 import Profile from './profile.jsx';
 import Inbox from './inbox.jsx';
 import MessageComposer from './message-composer.jsx';
 
-
+//See MainViewHeader and MainViewBody below
 export function MainView(props) {
   const {
-    view, changeView, user, mainViewUser, allUsers,
+    view, changeView, mainViewUser,
   } = props;
 
   function getViewTarget(target) {
@@ -24,38 +25,6 @@ export function MainView(props) {
       </div>
 
     </div>
-  );
-}
-
-
-export function MainViewBody(props) {
-  const {
-    view, changeView, user, mainViewUser, allUsers, selectedContent, setSelectedContent,
-  } = props.parentProps;
-
-  if (view === 'profile') {
-    return (
-      <Profile mainViewUser={mainViewUser} changeView={changeView} />
-    );
-  }
-  if (view === 'dm') {
-    return (
-      <MessageComposer user={user} mainViewUser={mainViewUser} changeView={changeView} selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
-    );
-  }
-  if (view === 'inbox') {
-    return (
-      <Inbox user={user} allUsers={allUsers} changeView={changeView} />
-    );
-  }
-  // or just show the browse user view
-  return (
-
-    <div className="d-flex flex-row justify-content-between flex-wrap">
-      { allUsers.filter(u => u.username !== user.username)
-          .map(u => <UserThumbPreview key={u.username} user={u} changeView={changeView} />) }
-    </div>
-
   );
 }
 
@@ -77,5 +46,40 @@ export function MainViewHeader(props) {
     </div>
   );
 }
+
+// handles Switching between profile, dm, inbox, browsw
+export function MainViewBody(props) {
+  const { parentProps } = props;
+  const {
+    view, changeView, user, mainViewUser, allUsers, selectedContent, setSelectedContent,
+  } = parentProps;
+
+  if (view === 'profile') {
+    return (
+      <Profile mainViewUser={mainViewUser} changeView={changeView} />
+    );
+  }
+  if (view === 'dm') {
+    return (
+      <MessageComposer user={user} mainViewUser={mainViewUser} changeView={changeView} selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
+    );
+  }
+  if (view === 'inbox') {
+    return (
+      <Inbox user={user} allUsers={allUsers} changeView={changeView} />
+    );
+  }
+  // Browse
+  return (
+
+    <div className="d-flex flex-row justify-content-between flex-wrap">
+      { allUsers.filter(u => u.username !== user.username)
+        .map(u => <UserThumbPreview key={u.username} user={u} changeView={changeView} />) }
+    </div>
+
+  );
+}
+
+
 
 // export default MainView;
