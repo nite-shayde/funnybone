@@ -37,7 +37,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server/index.js",
+    "start": "node server/index.js",
     "build": "npm install; webpack -p",
     "client-dev": "webpack --config webpack.config.js --mode development --watch"
   },

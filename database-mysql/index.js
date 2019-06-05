@@ -1,4 +1,5 @@
 // this is where the database connection will happen
+//pseudocode to push
 require('dotenv').config();
 const Sequelize = require('sequelize');
 const dummyUserData = require('../client/src/data/dummy-user-data');
