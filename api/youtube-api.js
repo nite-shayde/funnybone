@@ -14,12 +14,4 @@ function youtubeSearch(query) {
         })
 }
 
-// youtubeSearch('lil wayne')
-//     .then((response) => {
-//         console.log(response)
-//     })
-//     .catch((error) => {
-//         console.log(error)
-//     });
-
 module.exports.youtubeSearch = youtubeSearch;
