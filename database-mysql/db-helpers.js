@@ -61,7 +61,7 @@ const findUserId = email => Users.findOne({ where: { email } }).then(user => use
 
 // stores Users Interests in join table
 const storeUsersInterests = (userDbId, intDbId) => 
-  UsersInterests.findOrCreate({ // creates a join table with unique values for movieId and userId
+  UsersInterests.findOrCreate({ // creates a join table with unique values for interestId and userId
     where: { userId: userDbId, interestId: intDbId },
     defaults: { userId: userDbId, interestId: intDbId },
   });
@@ -69,10 +69,19 @@ const storeUsersInterests = (userDbId, intDbId) =>
 // store unique values of Interests
 const storeInterests = intName => Interests.findOrCreate({ where: { name: intName }, defaults: { name: intName } })
 
-const pullUsersInterests = userDbId => 
-  UsersInterests.findAll({ // find all movieId's stored on join table tied to given user id
-    attributes: ['interestId'],
-    where: { userId: userDbId },
+const pullUsersFromInterests = intDbId => 
+  UsersInterests.findAll({ // find all userId's stored on join table tied to given interest id
+    attributes: ['userId'],
+    where: { interestId: intDbId },
+  });
+
+const findAllUsers = userDbIdArr => 
+  Users.findAll({ // find all Users that match the given id's in the userDbIdArr
+    where: {
+      id: {
+        [Op.or]: userDbIdArr,
+      },
+    },
   });
 
 module.exports.getUsers = getUsers;
@@ -84,4 +93,6 @@ module.exports.storeInterests = storeInterests;
 module.exports.storeUsersInterests = storeUsersInterests;
 module.exports.findInterestsId = findInterestsId;
 module.exports.findUserId = findUserId;
-module.exports.pullUsersInterests = pullUsersInterests;
+module.exports.pullUsersFromInterests = pullUsersFromInterests;
+module.exports.findAllUsers = findAllUsers;
+
