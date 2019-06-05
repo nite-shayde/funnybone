@@ -61,3 +61,4 @@ module.exports.connection = connection;
 module.exports.Messages = Messages;
 module.exports.Users = Users;
 module.exports.UsersInterests = UsersInterests;
+
