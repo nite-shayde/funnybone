@@ -1,6 +1,6 @@
 const { Users, Messages, Interests, UsersInterests } = require('./index');
 const Sequelize = require('sequelize');
-// const dummyMessages = require('../client/src/dummy-message-data');
+// const dummyMessages = require('../client/src/data/dummy-message-data');
 
 const { Op } = Sequelize;
 
