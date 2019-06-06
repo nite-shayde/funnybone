@@ -51,7 +51,7 @@ const UsersInterests = connection.define('users_interests', {}); // create join 
 UsersInterests.belongsTo(Users); // define join table relationship to Users
 UsersInterests.belongsTo(Interests); // define join table relationship to Interests
 
-connection.sync({ force: true })
+connection.sync({ force: false })
   .then((result) => {
     console.log(result, 'connected to', database);
   })
