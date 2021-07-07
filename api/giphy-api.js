@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const giphyKey = process.env.GIPHY_API_KEY || require('./.config').giphyKey;
+const giphyKey = process.env.GIPHY_API_KEY || require('./config').giphyApiKey;
 
 
 // retrieves 25 gifs of what user searched

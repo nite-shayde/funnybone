@@ -3,6 +3,8 @@ a humor-based dating app that takes a light-hearted approach to bringing people 
 
 to start the app:
 
+node version 8 is required
+
 load modules:
 npm install
 

@@ -1,4 +1,6 @@
 // this is where the database connection will happen
+//pseudocode to push
+require('dotenv').config();
 const Sequelize = require('sequelize');
 const dummyUserData = require('../client/src/data/dummy-user-data');
 
@@ -33,6 +35,7 @@ const Users = connection.define('users', {
   password: Sequelize.STRING,
   profilePicURL: Sequelize.STRING(500),
 });
+
 const Messages = connection.define('messages', {
   contentType: Sequelize.STRING,
   content: Sequelize.STRING,
@@ -40,19 +43,24 @@ const Messages = connection.define('messages', {
   toId: Sequelize.INTEGER,
 });
 
+const Interests = connection.define('interests', {
+  name: Sequelize.STRING
+});
+
+const UsersInterests = connection.define('users_interests', {}); // create join table as new table so it can be referenced as variable
+UsersInterests.belongsTo(Users); // define join table relationship to Users
+UsersInterests.belongsTo(Interests); // define join table relationship to Interests
+
 connection.sync({ force: false })
   .then((result) => {
     console.log(result, 'connected to', database);
-    // Users.bulkCreate(dummyUserData)
-    // .then(user => {
-    //   console.log(user.dataValues);
-    // })
   })
   .catch((err) => {
-    console.log(err, '!!!!!!!!!!!!!');
+    console.log(err, 'could not connect to', database);
   });
-
 
 module.exports.connection = connection;
 module.exports.Messages = Messages;
 module.exports.Users = Users;
+module.exports.UsersInterests = UsersInterests;
+
